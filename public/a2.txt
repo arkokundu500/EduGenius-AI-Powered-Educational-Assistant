@@ -1,2 +1,294 @@
-Three bad words are - 
-ANDI MANDI SHANDI 
+Data Clustering: K-means, MST based
+Data Clustering is the process of assigning the objects in the data into groups or clusters in a way that the objects in the same cluster are more similar than those in other clusters.
+
+A similarity measure is defined over the data to be clustered to calculate the proximity between pairs of objects. Then a clustering algorithm is chosen to perform the grouping of data. Based on the requirement the algorithm is either a hierarchical or partition based. Suitable algorithm needs to be chosen based on the type and size of data, hardware and software availability.
+
+The applications of data clustering are to several exploratory pattern-analysis, decision-making, grouping tasks, machine-learning situations, including data mining, pattern classification, document retrieval and image segmentation
+
+\n\n
+
+Data Clustering: K-means, MST based
+In order to elaborate the concept, let us take an example of the library system. The books present in a library will be related to a variety of topics. Books based on similar topics are placed together. Say, some books are on computer programming, some on database systems, some on computer graphics, and so on. Sections are created in the library titled with these topics and the related books are kept in that shelf. Further sub-sections can be created on sub-topics if needed. When a visitor wants to search a book on specific topic he browses that particular section instead of going through all the books in the library.
+
+The data for clustering can get really complex in many of the real world applications. It was relatively simple in the above example. The data to be clustered needs to be represented in a feature space. Then a suitable distance measure is defined to calculate the dissimilarity between to data points. The well-known dissimilarity measures used are Euclidean distance or Minkowski distance.
+
+We will discuss two clustering techniques - K means and MST based partitioning.
+
+K-means clustering
+
+This is an iterative clustering algorithm typically run with different start states until a satisfactory partitioning is done. The start state being selection of cluster centers. The number of clusters needs to be defined beforehand. The algorithm runs in the following way -
+
+Choose k cluster centers to coincide with k randomly chosen data points or k randomly defined points inside the hypervolume containing the data set.
+Assign each point to the closest cluster. The squared euclidean distance is used here. Recompute the new cluster centers as the centroids of the resultant clusters.
+Repeat this until convergence is achieved, i.e the cluster membership is stable.
+Several variants of this algorithm have been reported in the literature. Some attempt to select good initial centers, some permit splitting and merging of the formed clusters for better results.
+
+MST based clustering
+
+This is a graph theoretic clustering algorithm based on construction of minimal spanning trees(MST) of the data. The edge lengths are the squared euclidean distances between the two nodes. Edges with length greater than some threshold are then deleted from the MST to form data clusters.
+
+Many variants of the algorithm exist in the literature attempting to improve clustering results. The implementation in our experiment is from [Ref #3]. First, the MST is constructed on the data points. Then the clustering process is iterated over a range of threshold edge lengths. Each time ratio of Intra-cluster distance to Inter-cluster distance is calculated for the data points in the clustering result. The final cluster set selected based on the threshold which has the minimum Intra-cluster to Inter-cluster distance ratio.
+
+\n\n
+
+Data Clustering: K-means, MST based
+The high level goals of the experiment are:
+
+Understand the idea of data clustering.
+Understand how the choice an clustering algorithm is important for desired results.
+Understand the described two clustering methods K-means and MST based.
+Understand the difference between the two approaches used and the different results that these may give on similar data.
+
+\n\n
+
+Data Clustering: K-means, MST based
+In the experiment window,
+
+Select the clustering method on the top right.
+To plot data points and means on the graph - load custom datasets. or mark manually or randomly generate using the options in the side pane.
+'Start' will begin the clustering process.
+'Run' will run one iteration of the clustering process. (Applicable for K-means method).
+'Finish' will complete the clustering process to reach an optimal solution. (Applicable for K-means method).
+
+\n\n
+
+Phototrophic Microbial Fuel Cell using Chroococcus sp
+Introduction
+With the rapid growth of industrial applications, it has been reported that freshwater aquatic life has threats due to pesticide pollution, pharmaceuticals, heavy metals, and other toxic pollutants that may enter directly into natural waterways and form potential hazards to day-to-day life. The need for standard procedures for remediating pollutants and usage of green technology approaches with renewable sources including solar energy and biomass were underway to meet the necessities of humankind. Microbial fuel cells (MFCs), play an important role in bioelectricity generation with the help of electrode-adhered electrogenic bacteria that oxidize the organic substrate including wastewater to produce electrons resulting in bioelectricity generation. This technology has been considered as an environmentally friendly approach in sustainable wastewater treatment and power generation reducing the demands of costly energy resources. Nowadays, photosynthetic microbial fuel cells (photo-MFC), are a promising technology for energy production. Phototrophic MFCs (PhMFC) can be used both indoors and outdoors and use solar energy to generate power, biomass, and environmental remediation on-site. PhMFC variants include plant-based MFCs and algal-based MFCs that convert light energy into electricity through the photosynthesis process. In algal-based MFCs, a special photosynthetic process occurs at either the anode or cathode activating or replacing the role of bacteria in the regular bacterial MFCs. Plant-based MFCs are thought to be more complex due to the need for a root system near electrodes that needs to interact with bacteria adhered to the electrode to enhance photosynthesis. In this experiment, the process in an algal-based PhMFC is illustrated.
+
+ 
+Theory
+In a typical microbial fuel cell, active microorganisms are used as biocatalysts to produce bioelectricity. As discussed in the experiments link, an MFC consists of anode and cathode chambers which are separated by a proton exchange membrane (PEM). The microorganisms that act as biocatalysts in the anode oxidize the organic substrates such as glucose (electron donor) in the water that produce electrons and protons. The protons then move to the cathode through PEM and the electrons move through the external circuit. This results in the production of electric current, meanwhile the protons and electrons in the cathode chamber reduce the oxygen (electron acceptor, other examples, hexacyanoferrate, and acidic permanganate) to form water molecules (Fig.1).
+ 
+
+Fig.1. Typical configuration of a two-chambered MFC
+
+Adapted from: Vishwanathan, A.S., 2021. Microbial fuel cells: a comprehensive review for beginners. 3 Biotech, 11(5), p.248.
+
+Presently, different types of MFCs have been proliferated that incorporate the use of photosynthetic elements such as plants, algae, and phototrophic and heterotrophic bacteria which are termed phototrophic MFCs. In phototrophic MFCs, photosynthetic microorganisms were utilized for the conversion of light energy into electrical energy. Electroactive and photosynthetic organisms function to generate electricity and enhance MFC performance. Plant-based Phototrophic MFCs natural plant MFCs (NPMFCs), constructed wetland MFCs (CWMFCs), and marine-rooted plant MFCs (MPMFCs). Algae-based MFCs are further classified as anode algal MFCs (AAMFCs), where the photosynthesis happens at the anode produces power and in algal carbon capture cells (ACCC), algae present at the cathode chamber transform CO2 by-products from the anode into biomass with the aid of energy from absorbed photons. Plant-based MFCs are complex for laboratory settings as they involve the interaction of the root system with the anode by the symbiotic relationship between electroactive bacteria at the electrodes and plant root’s rhizodeposits. In laboratory settings, microalgae and Cyanobacteria were extensively used for bioenergy production and other environmental applications due to shorter cultivation time, 10-fold higher lipid content, and greater photosynthetic efficiency compared to others. Phototrophic microorganisms that could produce oxygen during photosynthesis are termed as oxygenic phototrophs (Cyanobacteria), and others were termed as anoxygenic phototrophs (e.g., green, and purple sulfur bacteria).
+
+
+Working Principle of Phototropic Microbial Fuel Cell
+Phototropic microbial fuel cells are devices that use photosynthetic organisms to turn light energy into electrical energy. In a PMFC, an anode accepts electrons from the microbes that grow in the anodic chamber as biofilms or as free floaters in the solution. The anode facilitates the transfer of electrons from the microorganism without any electron mediator. It is noted that the anode should not prevent light from entering through the photosynthetic cells. The cathode facilitates the reaction of protons and oxygen to form water. Apart from anaerobic bacteria that use respiratory electron transport chain together with membrane-bound cytochrome oxidases for transferring electrons to the extracellular acceptors for electricity production, phototrophic organisms including Cyanobacteria also possess electrogenic activity which is sunlight dependent, unlike heterotrophs. The phototrophic organism in the anode donates electrons to extracellular electron acceptors under illumination. This poses another possibility that the electron discharge may not be only the biochemical oxidation of organic compounds but also due to the light-driven bio photolysis of water.
+
+Cyanobacteria, also known as blue-green algae, are photosynthetic bacteria that play a crucial role in the production of oxygen through the process of photosynthesis. Cyanobacteria possess an elaborate electron transport pathway for carrying out photosynthesis and respiration, and to produce energy without cellular damage. In Cyanobacteria, the photosynthetic electron transport chain (the light reactions) and the majority of the respiratory electron transport complexes are housed in the intricate intracytoplasmic thylakoid membranes. Conversion of solar energy in photosynthetic Cyanobacteria occurs over two reactions: Photosystems 1 (PS1) and Photosystems 2(PS2), densely packed with membrane-integral proteins in the thylakoid membranes. PSI functions in capturing light energy and transfers electrons to downstream components of the electron transport chain. PS1 and PS2 are connected in series that interact with electron carriers, enzymes, and co-factors including plastoquinone (PQ), Plastocyanin (PC), Cytochrome b6f complex, and ferredoxin. The electron carrier’s function is to transport electrons from water photolysis to the terminal electron acceptor Nicotinamide Adenine Dinucleotide Phosphate (NADP+). In PSI, when light energy is absorbed, the electrons become excited and move to a higher energy state. These electrons are transferred through the electron carriers, phylloquinone, and iron-sulfur clusters, and the energy is released that is used to pump protons through the thylakoid membrane into the thylakoid lumen. Ferredoxin (Fd), an iron-sulfur protein is the final electron acceptor in PSI. The electrons are transferred for the reduction of NADP⁺ to NADPH, the coenzyme in the Calvin Cycle (dark reactions) for fixing carbon dioxide to produce carbohydrates. In PSII, a chlorophyll-based molecule P680 encounters photoexcitation of redox potential from its normal state to an excited level resulting in the oxidation of water to oxygen, protons, and electrons which flow to quinone pool (QA). QA functions as an acceptor that stimulates PQ reduction. PQ accepts electrons from PSI and PSII, and transfers the electrons to Cytb6f, then to soluble electron carrier PC on the thylakoid lumen and further to PS1. In PS1, photoexcitation encountered by P700 from the normal state to excited state leading to electron flow to Fd, producing NADH (Fig.2).
+
+ 
+
+Fig.2. Electron Transport Chain in Plants and Cyanobacteria
+
+Adapted from: Rasmussen, M. and Minteer, S.D., 2014. Photobioelectrochemistry: solar energy conversion and biofuel production with photosynthetic catalysts. Journal of the Electrochemical Society, 161(10), p.H647.
+
+The biofilm formation and aggregation of microorganisms on surfaces is the basis for study in the development of efficient microbial fuel cells. Biofilm formation in the anode increases current formation in MFC because of the direct electron transfer between microbes and the surface of the anode.
+
+In this experiment, Chroococcus species, which is a unicellular organism in the genus Cyanobacteria, which is blue-green in color and macroscopic colony mounded were selected as a phototrophic organism to design a phototrophic microbial fuel cell. Chroococcus are usually freshwater-inhabited but identified in high salinity water sources, and in plankton inhabiting water resources. Chroococcus cells are ovoid or rod-shaped 0.4 to 40µm sized unicells named blue-green strain of algae. Considering metabolism, Chroococcus are autotrophic organisms that can survive without any freshwater or oxygen source. It can produce oxygen and ATP through photosynthesis.
+
+
+Apparatus Design
+The apparatus was fabricated in acrylic sheet due to its material consistency, lightweight compared to glass with flexibility and durability, and high impact resistance making it an excellent insulator. The acrylic sheet can be 30cmX20cm in length and breadth with an airtight compartment. Four square-shaped compartments with the anode (4 chambers) and cathode (4 chambers) having 5X4.5 cm2 of each compartment were modeled. The connecting salt bridge has a length of 5 centimeters and a breadth of 3 centimeters. Both anode and cathode can hold 50ml and PEM can hold 35ml. This presents a general methodology for assembling a phototrophic microbial fuel cell. The apparatus design can be changed depending on the amount of anolyte and catholyte to be filled to obtain maximum current in a scalable manner. For example, the anolyte and catholyte can be changed to 1000ml with PEM 750 ml for better results.
+
+Generally, an MFC consists of an anodic chamber, a cathodic chamber, and a Proton Exchange Membrane (PEM) of individual cells arranged concentrically. The outer part is the anodic chamber, and the inner part is the cathodic chamber which is separated by PEM (Fig.3).
+
+Electrodes
+Aluminium- Copper combination
+
+Surface area of Aluminium (anode) electrode = (4.5X4.4) = 19.8 cm2
+
+Surface area of Copper (Cathode) electrode = (4.5X4.4) = 19.8 cm2
+
+The surface area can be enhanced by folding the electrode sheets into four folds. Then the surface of each electrode will be 4X19.8 = 79.2 cm2
+
+Proton Exchange Membrane
+Nutrient agar was prepared in 675ml by adding ingredients for 750ml and properly sterilized. After cooling 75ml of Bacillus subtilis culture was added and mixed well. Seal the windows of PEM with adhesive tape and then pour nutrient agar with Bacillus culture into the middle chamber (40ml). After the agar solidified, the tape was peeled off.
+
+Electrolyte
+A wastewater sample was collected which was used as an anolyte. 140ml(35 ml in each compartment) was added. The sample was inoculated with the phototrophic organism, Chroococcus species. It was then incubated for 15 days under sunlight. Microbial growth was observed after 15 days. Aluminum electrodes were used in the anodic chamber. Potassium permanganate solution (0.3%) 140ml was prepared and 35ml was poured into a single compartment was used as catholyte. Copper electrodes were placed in the cathodic chamber. Another option for phototrophic organisms that can be added to the MFC is Synechococcus elongatus, a unicellular, obligate photoautotroph that is represented as a preeminent model for studying photosynthesis in laboratory conditions.
+
+
+Fig.3. Design of Phototrophic Microbial Fuel Cell in a laboratory setting
+
+Adapted from: Cao, Y., Mu, H., Liu, W., Zhang, R., Guo, J., Xian, M. and Liu, H., 2019. Electricigens in the anode of microbial fuel cells: pure cultures versus mixed communities. Microbial cell factories, 18(1), pp.1-14.
+
+
+Biological Oxygen Demand
+Biological Oxygen Demand (BOD) defines the amount of dissolved oxygen used by the microorganisms while metabolizing organic matter in the water. The water sample is diluted to ensure the demand for oxygen does not exceed the amount of available oxygen (Measuring of BOD see experiment link).
+
+
+Generation of I-V Curve
+In a phototrophic Microbial Fuel Cell, the objective is to maximize power output with the highest current density with maximum potential. Open Circuit Voltage (OCV) is achieved when there is infinite resistance. The Keithley Source meter was connected to the PMFC, and the voltage sweep was calculated. The data can be used to calculate voltage versus current to obtain an IV curve. The connection can be done either in parallel or in series to study voltage and current fluctuations. Current density was calculated as I = V/A, where V (mV) is the voltage and A (m2) is the geometric surface area of the anode electrode. Power density (mW/m2) was calculated as P = IV.
+
+In a power density graph, maximum points indicate the maximum power on the curve. The slope of the polarization curve indicates the internal resistance of MFC that has an impact on the maximum output of power generated. The point of intersection of the two-polarization graph is indicative of Maximum Power Point, which is representative of the maximum power generated by the MFC.
+
+
+Applications of Phototrophic Microbial Fuel Cell
+· Wastewater treatment to produce energy utilizing anaerobic digestion.
+
+· Hydrogen gas production. Protons and electrons produced by the organism in the anodic chamber are turned into hydrogen gas.
+
+· BOD Sensing is used as a sensor for pollutant analysis in industrial applications.
+
+· Production of bioelectricity.
+
+· Bioremediation of pollutants.
+
+\n\n
+
+Single Cycle
+There are multiple approaches for CPU design.
+
+Single Cycle
+Mutiple Cycle
+Pipelined
+In this lab we shall understand the Single Cycle CPU design for a subset of instructions from the MIPS ISA.
+
+
+Single Cycle
+1 In Single Cycle CPU design approach each instruction takes exactly one clock cycle to execute.
+2 In Multicycle CPU each instruction multiple clock cycles to execute.
+3 In Pipelined approach instruction execution takes place in a overlapped fashion.
+4 The instructions supported by the Single Cycle cpu in our experiment and how to microcode new instructions are all given as a part of the experiment itself.
+
+\n\n
+
+Lambda Functions
+
+
+In Image 1, Punit is depicted as a part-time librarian in a college responsible for managing the library's book inventory. Being a software engineer himself, he decided to simplify his task by developing a library management application. As a proficient Python programmer, he chose to utilize lambda functions for the following reasons:
+
+They offer a concise and inline method to define small, anonymous functions, resulting in less complex code and improved logic comprehension.
+Moreover, lambda functions enable compact code focused on specific tasks, eliminating the need for separate function definitions and reducing cognitive load.
+Let us explore more about lambda functions
+
+What are lambda functions?
+Lambda functions in Python are considered a special type of function that do not have a function name.
+The syntax of lambda expression is lambda input:expression , where lambda is the keyword, input is the user input, and in the expression part defines the action to perform with the user input.
+For example, if we want to write a lambda function to calculate square root, it would be y=lambda x : x**2 → Here, ‘x’ the user input would be stored in variable ‘x’, and we define the formula to calculate square root. If we want to find the square root of 3, we need to call the function i.e y(3), the output would be 9.
+If we want to write a lambda function which adds 2 numbers, it would be z=lambda x,y:x+y→ here x and y are the 2 inputs which would be provided by the user, and x+y adds the 2 numbers and returns the output. If we want to add 2 numbers i.e 3 & 4, we call the function z(3,4), the output would be 7
+What is the difference between lambda function and return function?
+Lambda function has no return value
+Lambda function returns the entire function
+Lambda function can be written in only one line
+Lambda function are not used for code reusability
+Lambda functions do not have a name
+Commonly used lambda functions
+1) Map
+
+The map() function takes two parameters, a function and an iterable. The iterable can be anything, such as a list, set, tuple, etc.
+If you give a list as an input to map() function, then some operation is performed on every item in the list.
+For eg: consider a list of numbers i.e L=[1,2,3,4,5,6,7], If we want to double every item present in the list, then our code would be list(map(lambda x:x*2,L)). Here the map function has 2 parameters, i.e a lambda function and an iterable, which is our list(L=[1,2,3,4,5,6,7]), that we have defined previously
+Firstly, the lambda function will iterate all the elements in the list one by one and multiply each element in the list by 2, and store the result. Hence, our output would be L=[2, 4, 6, 8, 10, 12, 14]. -In the above map function, we apply logic to every element that is present in the list.
+Later in this article, we will explore(with the help of code) how Punit utilised the map function to generate a new list exclusively comprising the titles of the filtered books and we will also be exploring how Punit utilised the map function to create a new list of dictionaries that contains only the title, author, and rating of the filtered books.
+2) Filter
+
+The filter function enables the application of a condition to an iterable, and provides an output based on that condition.
+For instance we have a list of numbers i.e L=[1,2,3,4,5,6,7], and we only want the numbers that are greater than 4. In that case, our code would be list(filter(lambda x:x>4,L)).Here, we first define the condition x>4 using a lambda function, and then apply a filter to only keep those numbers in list ‘L’ that satisfy this condition. Therefore, our output would be [5, 6, 7].
+Another example would be a list of vegetables i.e veg=['brinjal','potato','tomato','palak','methi'], and we want only those vegetables which contain the letter ‘l’. In that case our code for the same would be list(filter(lambda x: 'l' in x,veg)), and the output would be ['brinjal', 'palak']
+Later in this article, we will explore(with the help of code) how Punit utilised the filter function to create a new list that contains only the books published after a certain year.
+3) Reduce
+
+The reduce function is used to reduce your list to a single element.
+For example, let's say we have a list L=[5,7,8,13] and we want to obtain a list consisting of a single element, which is the sum of all the numbers present in the original list. The code for this would be functools.reduce(lambda x,y:x+y,L) , in order to use the reduce function, we need to import a module named ‘functools’ -Let's understand the working of the above example. Initially, the first two elements from the list are picked and their sum is obtained i.e 5+7=12. Now, our list becomes L=[12,8,13].
+In the next step, we apply the function to the previously attained result and the result is stored again i.e 12+8=20. Now, our list would be L=[20,13]. We perform 20+13=33, and our list becomes L=[33]. Since there is only a single element present in the list, we stop the process and return the output to the user.
+Later in this article, we will explore(with the help of code) how Punit utilised the reduce function to calculate the total number of pages in the filtered books
+Image 2 represents that Raj begins to define a list of books in his library, with each book represented as a dictionary containing information such as the title, author, publication date and number of pages the book contains.
+
+He then uses the filter function to create a new list that contains only the books published after a certain year. For instance, they can filter the list to only include books published after 2000. The code for the same is represented below:
+
+books = [
+          
+          {'title': 'Book A', 'author': 'Karthik', 'publication_year': 1999, 'pages': 100,'rating':3.5},
+          
+          {'title': 'Book B', 'author': 'Adyansh', 'publication_year': 2005, 'pages': 200,'rating':4.5},
+          
+          {'title': 'Book C', 'author': 'Raj', 'publication_year': 2010, 'pages': 150,'rating':4.2},
+          
+          {'title': 'Book D', 'author': 'Ravi', 'publication_year': 2000, 'pages': 250,'rating':4.1}
+          
+          ]
+          
+          filtered_books = list(filter(lambda book: book['publication_year'] > 2000, books))
+          
+Next, he used the map function to create a new list that contains only the titles of the filtered books. This new list will be a simplified inventory of the books that meet the his criteria.The code for the same is represented below:
+
+book_titles = list(map(lambda book: book['title'], filtered_books))
+          
+Then he used the reduce function to calculate the total number of pages in the filtered books. The code for the same is represented below:
+
+total_pages = reduce(lambda acc, book: acc + book['pages'], filtered_books, 0)
+          
+Finally, he used the map function to create a new list of dictionaries that contains only the title, author, and rating of the filtered books. This simplified list can be useful for generating book recommendation lists for the library patrons. The code for the same is represented below:
+
+simplified_books = list(map(lambda book: {'title': book['title'], 'author': book['author'], 'rating': book['rating']}, filtered_books))**
+          
+Image 3 represents that Raj was finally happy because he would now be able to manage the inventory of the library more efficiently. Thanks to lambda functions in python
+
+\n\n
+
+Modular assembly of MFC to increase voltage or current
+Introduction
+Microbial fuel cells (MFC) provide an alternative method for producing energy from waste products. Here, the organic matter is converted into electric current with the help of microorganisms as biocatalysts for the reaction. Even though MFC is considered a promising technology, high internal resistance, and low current production results in less economic feasibility. Typical MFCs include an anodic chamber and a cathodic chamber which is separated by a salt bridge or PEM. The microorganism present in the substrate oxidizes the organic compounds and produces electrons and protons. The electrons produced move to the anode surface which is then transferred through the external circuit to produce electricity. The protons transfer through the proton exchange membrane (PEM) to the cathodic chamber where the proton, electron, and electron acceptor combine to produce water. The output current depends on the assembly of the components of the MFC, and research has been progressing to find alternative solutions for improving the productivity of MFC with effective electrode materials and robust microorganisms for full-scale application.  
+
+Theory
+There has been increased demand for alternative sustainable energy with less emission of greenhouse gases and the use of microbial fuel cells has boosted for maximum energy efficiency. As discussed in the previous experiments, a microbial fuel cell (MFC) is a promising renewable and sustainable new technology that converts the chemical energy resident in organic materials into electric energy mediated by microorganisms as biocatalysts for oxidizing the biodegradable substrate. A typical MFC consists of anodic and cathodic compartments separated by a cation (positively charged ion) specific membrane. The microorganisms in the anodic compartment of MFCs are exoelectrogenic in nature and generate electrons, protons, carbon dioxide, and other metabolic products by metabolizing organic matter. The electrons are transferred externally to the cathodic chamber with simultaneous production of electricity. The generated protons in the anodic compartment are transported to the cathodic chamber through the proton exchange membrane, and the protons and electrons in the cathodic chamber combine with oxygen to produce water molecules.
+
+The design and construction of a microbial fuel cell (MFC) involves a combination of techniques and principles of biology, electrochemistry, and engineering. There are certain parameters to be considered while constructing a microbial fuel cell. These include the effectiveness of proton exchange membrane (PEM), cell resistance, type of organic substrate, types of electrode materials, size, and connection of MFCs for scaling up the design with reduced fabrication cost.  
+
+Modular Assembly of MFC
+1. Components of MFC
+The type of material used for MFC design has a great impact on its performance. Generally, the MFC has an anode chamber and a cathode chamber, and the framework was constructed with specific non-reactive materials like acrylic, glass, or plastic which should be compatible with the other components of the MFC.
+
+Anode
+The anode electrode works to transfer the electrons and protons, the common reactions occurring in the MFC. The chosen electrode material must be resistant to corrosion over time, biocompatible, have higher electrical conductance, be mechanically and chemically stable, be non-toxic, have a higher surface area, and have low operation cost. The anode electrode plays an important role in facilitating the transfer of electrons from the bacteria to the external circuit. The commonly used electrodes are carbon brushes, carbon rods, carbon mesh, carbon paper, graphite plate, carbon cloth, carbon felt, and Carbon Nanotubes (CNTs). In addition to carbon-based materials, other conductive materials such as stainless steel, gold, silver, copper, aluminium, nickel, and titanium also serve as electrode materials. The highly conductive materials function to increase MFC power efficiency.
+
+Cathode
+The cathode electrode in a microbial fuel cell (MFC) functions to facilitate a reduction reaction thereby completing the electron transfer process initiated at the anode chamber. The cathode electrode acts as an electron acceptor for the MFC reactions. The electrode materials are usually the same as in the anode compartment. The commonly used electrodes are Carbon Cloth, Carbon Paper, Graphite Rods, carbon rods, carbon mesh, and in some cases, platinum-based materials are used as catalysts to improve MFC performance.
+
+Proton Exchange Membrane
+The membrane is responsible for separating the anodic and cathodic chambers and allows the migration of protons (H⁺ ions) produced during microbial metabolism in the anode chamber to the cathode chamber. The direct contact between the anode and cathode electrodes was prevented to ensure electrochemical reactions on both sides increasing the MFC performance. PEM prevents electrolyte leakage between the chambers and crossover of gases between the anodic and cathodic chambers maintaining the anode as anaerobic and the cathode as aerobic favoring the microbial metabolism and contributing to MFC performance efficiency. Overall, PEM provides mechanical stability and integrity to MFCs. Commonly used PEM is perfluorinated sulfonic acid polymers such as Nafion but is expensive. Another option is to use Nutrient agar with Bacillus subtilis which also promotes efficient proton transfer between the chambers.
+
+2. Design of MFC
+MFCs are widely classified into different types depending on the number of chambers used: single-chambered fuel cell, double-chambered fuel cell, and stacked microbial fuel cell. In a single-chamber microbial fuel cell (both the anode and cathode compartments are combined into a single chamber, separated by a proton-exchange membrane (PEM) or some other ion-selective membrane. The advantage of using single-chamber MFC is low internal resistance and low construction cost. Gaseous crossover, microbial adulteration, and short circuits are likely to occur in single-chamber MFCs. In double chambered fuel cell anode and cathode are constructed as two separate components separated by a proton-exchange membrane (PEM) or an ion-selective membrane separating them. The scalability of double-chamber microbial fuel cells due to the need for aeration requirements is a major drawback that needs to be stabilized for laboratory purposes. Stacked microbial fuel cells have been employed to improve power generation from MFC. Here, multiple MFC units in series or parallel are connected to increase power output.
+
+This experiment delves into introducing the design features of a stacked microbial fuel cell.
+
+Stacked Microbial Fuel Cells
+A stacked MFC includes a type of configuration where fuel cells are assembled to form a fuel cell battery by being stacked on one another in a series or parallel connection.
+
+Series Connection
+In the series connection of the stacked microbial fuel cell, individual cells (grids) in the system are connected in a series manner, so that the electrical output in one cell is connected to the electrical input of the next cell and so on (till the last cell of the system). This arrangement results in cumulative voltage generation across the stack (Fig.1). The individual MFC unit (1*1) in the system has an anodic chamber and a cathodic chamber separated by a proton exchange membrane (PEM). During construction, the anode of one unit is connected to the cathode of the next unit (Fig.2). Electrons flow through each unit of MFC and this connection allows the voltage (electrical potential) of each MFC unit which can be measured by the multimeter while the current remains stable. While designing the series connection in MFC, it is important to consider factors such as the surface area of electrodes, microbial activity, and internal resistance for improving MFC performance.
+
+
+Fig.1. Representation of connecting six individual MFC units in series; R, external resistance; A, anode; C, cathode
+
+Adapted from: Yu, J.C. and Lee, T.H., 2009. Evaluation of Single and Stacked MFC Performances under Different Dissolved Oxygen Concentrations in Cathode Chamber. Journal of Korean Society of Environmental Engineers, 31(4), pp.249-255.
+
+
+Fig 2. Serial connection of MFC
+
+Adapted from: Mukherjee, A., Patel, V., Shah, M.T., Jadhav, D.A., Munshi, N.S., Chendake, A.D. and Pant, D., 2022. Effective power management system in stacked microbial fuel cells for onsite applications. Journal of Power Sources, 517, p.230684.
+
+In brief, the series connection in a stacked microbial fuel cell results in the cumulative voltage production thereby increasing the overall electrical output of the MFC stack that enables higher power generation which would be applicable for various purposes.
+
+Parallel Connection
+In the parallel connection of the stacked microbial fuel cell, the individual cells of the MFC are arranged parallelly so that the electrical outputs of the individual cells are connected at a constant voltage level. This arrangement results in the cumulative current generation across the stack. Here the anode of individual MFC units is connected and the cathodes of all units are connected together (Fig.3). When electrons start flowing through the MFC units, an electrical current is produced at each cell, and through parallel connection the current produced by each cell is added together to produce a cumulative current across the MFC system which can be measured by the multimeter connected to the system. The electrical power generation is high compared to the individual MFC operation separately. When higher currents are required, multiple units of MFC can be assembled parallelly to achieve the desired power generation.
+
+
+Fig.3. Parallel connection of MFC
+
+Adapted from: Mukherjee, A., Patel, V., Shah, M.T., Jadhav, D.A., Munshi, N.S., Chendake, A.D. and Pant, D., 2022. Effective power management system in stacked microbial fuel cells for onsite applications. Journal of Power Sources, 517, p.230684.
+
+Applications of series and parallel connections in MFC
+Both series and parallel connection in microbial fuel cells have a wider range of applications in various fields. Some examples included:
+
+In wastewater treatment plants for sensors, for equipment monitoring and to apply in small-scale electrical devices.
+
+In the bioremediation process, the higher voltages produced by the stack can be used to power pumps, mixers, or other equipment needed for the remediation process.
+
+In bioelectrochemical systems for driving the electrochemical processes necessary for biogas upgrading, desalination, and nutrient recovery.
+
+The choice between series and parallel connection in a laboratory setting depends on specific outcomes, such as voltage or current output, scalability factors, and related system integration considerations.
+
+\n\n
+
+
+

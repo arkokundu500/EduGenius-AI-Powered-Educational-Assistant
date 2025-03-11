@@ -30,3 +30,309 @@ If a page is not in RAM (page fault), it is loaded from disk.
 
 Inactive pages are swapped out to disk to free up RAM.
 
+\n\n
+
+
+Design of load cell and its characterization
+Aim
+Design of Load cell and its characterization
+
+Objectives
+Understand operation of load cell
+Configuration of load cell
+Validate stress and strain for change in pressure
+Design signal conditioning for load cell
+Observe performance of designed load cell
+
+\n\n
+
+
+Design of load cell and its characterization
+Load cell
+Theory
+A load cell is a transducer that converts force into a measurable electrical output. Although there are many varieties of load cells, strain gauge-based load cells are the most commonly used type. Load cells are sensors that detect force (mass, torque, etc.). When force is applied to a load cell, it converts the force into an electrical signal. Load cells are also known as "load transducers" because they convert a load (force) into electrical signals. There are many different kinds of load cells.
+
+Resistive load cells
+Capacitive load cells
+Resistive load cells work on the principle of piezo-resistivity. When a load/force/stress is applied to the sensor, it changes its resistance. This change in resistance leads to a change in output voltage. Capacitive load cells work on the principle of change of capacitance, which is the ability of a system to hold a certain amount of charge when a voltage is applied to it. For common parallel plate capacitors, the capacitance is directly proportional to the amount of overlap of the plates and the dielectric between the plates and inversely proportional to the gap between the plates.
+
+Working Principle
+A load cell is made by using an elastic member (with a very highly repeatable deflection pattern) to which a number of strain gauges are attached.
+
+*Turbine_constr2*
+
+In this particular load cell shown in above figure, there are a total of four strain gauges that are bonded to the upper and lower surfaces of the load cell.
+
+*Turbine_constr2*
+
+When the load is applied to the body of a resistive load cell as shown above, the elastic member deflects as shown and creates a strain at those locations due to the stress applied. As a result, two of the strain gauges are in compression, whereas the other two are in tension.
+
+During a measurement, weight acts on the load cell’s metal spring element and causes elastic deformation.
+
+This strain (positive or negative) is converted into an electrical signal by a strain gauge (SG) installed on the spring element. The simplest type of load cell is a bending beam with a strain gauge.
+
+We use a Wheatstone bridge circuit to convert this change in strain/resistance into voltage, which is proportional to the load.
+
+Wheatstone Bridge
+The four strain gauges are configured in a Wheatstone Bridge configuration with four separate resistors connected as shown in what is called a Wheatstone Bridge Network. An excitation voltage - usually 10V is applied to one set of corners and the voltage difference is measured between the other two corners. At equilibrium with no applied load, the voltage output is zero or very close to zero when the four resistors are closely matched in value. That is why it is referred to as a balanced bridge circuit.
+
+*Turbine_constr2*
+
+When the metallic member to which the strain gauges are attached is stressed by the application of a force, the resulting strain leads to a change in resistance in one (or more) of the resistors. This change in resistance results in a change in output voltage. This small change in output voltage (usually about 20 mV of total change in response to full load) can be measured and digitized after careful amplification of the small milli-volt level signals to a higher amplitude 0-5V or 0-10V signal. These load cells have been in use for many decades now and can provide very accurate readings but require many tedious steps during the manufacturing process.
+
+Formulae required for column-type load cells
+Cross-sectional area = π × r²
+where,
+π = 3.14 (sq mm)
+Axial strain εa = P / (A × E) = ε1 = ε3
+where,
+P = Applied load (N),
+A = Area (sq mm),
+E = Young's modulus (N/mm2)
+Transverse strain εt = (-P × ν) / (A × E) = ε2 = ε4
+where, ν = Poisson's Ratio
+ΔR1/R1 = ΔR3/R3 = f×εa
+ΔR2/R2 = ΔR4/R4 = f×εt
+Output voltage = Eb × f[ε2+ε4-ε1-ε3/4] , where output voltage in µV
+where,
+Eb = Supply voltage,
+f = Gauge factor (f)
+Formulae required for cantilever-type load cells
+Strain developed at the gauges, ε1 = -ε2 = ε3 = -ε4 = 6 × Px / Ewh²
+where,
+P = Applied load (N),
+E = Young's modulus (N/mm2),
+w = Width (mm),
+x = Length (mm),
+h = Height (mm)
+Output voltage = Eb × f[ε2+ε4-ε1-ε3/4] , where output voltage in mV
+where,
+Eb = Supply voltage,
+f = Gauge factor (f)
+Uses
+The type of instruments used in the geotechnical field depends on the scope of work. Load cells can be used at the initial stage i.e. during the research and development or even at a later stage while monitoring a structure. Geotechnical instruments are used both pre and post-construction to ensure the safety of structures, dams, tunnels, bridges, etc. Proper geotechnical monitoring ensures the long-term safety of these structures. Load cells find their application in the geotechnical field and they are commonly used to monitor:
+
+Deep foundations: excavation bracing like struts, soldier piles; tiebacks or anchors; retaining walls
+Tunnels and shafts: steel liner plate, cast-in-place concrete, segmented precast concrete, shotcrete
+Dams: Concrete Dams, Underground Power House
+Piles: Pile load test
+Applications
+To determine the load in rock bolts, tiebacks, foundation anchors, cables or struts
+Proof testing and long-term performance monitoring of different kinds of anchor systems
+Compressive load measurement between structural members i.e. tunnel supports or at the junction between a beam and the top of a pile strut
+Used extensively for correlating data obtained from borehole extensometers
+To determine the load in experimental research, pile testing and measurement of the thrust of rocks
+Compressive load measurement between structural members
+Measurement of compressive load and axial forces in struts
+Load testing in piles
+Determination of roof convergence in underground mines
+Advantages
+Load cells have rugged & robust construction along with outstanding reliability and long-term stability
+They are specially designed to suit the harsh & severe industrial environment
+Load cells are temperature compensated
+They have a stable system with no moving parts and linkages
+A few of them have multiple strain gauges incorporated to reduce positioning effects
+Any standard strain gauge bridge measuring readout device can be used with the load cells
+The load cells have negligible side and eccentric load effect
+Limitations
+It requires continuous electric energy for the production and display of signals
+It also requires an amplification circuit for the generation of output display because the signals produced by the gauge itself are of very low voltage almost in milli-volts
+It cannot be used for the pressure measurement of highly reactive or corrosive materials because they can damage the gauge
+It cannot be used for the measurement of very high pressure if the diaphragm used is of plastic.
+
+
+\n\n
+
+
+Continuous Systems
+Some special type of structures like cooling towers, bunkers and silos are considered as continuous systems. These type of structures have importance in their functionality. Some of the continuous systems may have different type of profiles like rectangular, trapezoidal, hyperboloid etc. Their response due to dynamic loading varies for different profiles.
+
+To know the response of structure for different profiles and for different behavior (shear(fixed), bending, shear(hinge)) of the structure.
+
+\n\n
+
+Concept of Response Spectrum
+Response spectrum is one of the useful tools of earthquake engineering for analyzing the performance of structures especially in earthquakes, since many systems behave as single degree of freedom systems. Thus, if you can find out the natural frequency of the structure, then the peak response of the building can be estimated by reading the value from the ground response spectrum for the appropriate frequency. In most building codes in seismic regions, this value forms the basis for calculating the forces that a structure must be designed to resist (seismic analysis).
+
+A response spectrum is a plot of the maximum response amplitude (displacement, velocity or acceleration) versus time period of many linear single degree of freedom oscillators to a give component of ground motion. The resulting plot can be used to select the response of any linear SDOF oscillator, given its natural frequency of oscillation. One such use is in assessing the peak response of buildings to earthquakes.
+
+\n\N
+
+Concept of Response Spectrum
+Observation 1: Concept of Response Spectrum
+
+There are 2 buildings shown on the screen. User can select the mass and stiffness of both the buildings. However, user needs to make sure that both buildings have the same time period, i.e, the ratio of mass and stiffness is the same.
+Select the earthquake ground motion dataset to be used. Note that it is recommended to use the default of 1 for best understanding.
+It will be observed that the maximum displacements(values can be seen in the graphs) of both the oscillators are the same irrespective of their different mass and stiffness values given that their time periods are the same.
+Observation 2: Construction of Response Spectrum
+
+Select the time period of the building as per your choice. The range of time periods that can be used is from 0.1 sec up to 4.0 secs in increments of 0.1 sec.
+After selecting the time period, user can select the earthquake ground motion record of their choice. Note that it is recommended to use the default of 1 for best understanding. User can also set the damping(etta).
+User can find the maximum response corresponding to the time period selected highlighted in the graphs by a red point.
+User may repeat the experiment using different ground records and damping values to observe corresponding changes in the graphs.
+Note that there is no simulation or animation for this observation. Only a static diagram has been displayed for a basic understanding.
+Video: Realistic Simulation
+
+The video enables the user to gain a deeper insight and hence a better understanding by observing the experiment being simulated in a live environment with appropriate lab equipment.
+Graphs:
+
+There are various features available for the graphs such as zoom, etc. The function/feature of each icon above the graphs becomes visible upon hovering over the concerned icon.
+
+\n\N
+
+Depth First Search
+Prerequisites of the Experiment
+Basic knowledge of
+Arrays
+Lists
+And above all, a curiosity to learn and explore!
+Overview of the Experiment
+The experiment features a series of modules with video lectures, hands-on practice exercises and quizzes for self analysis.
+Depth First Search
+Definition
+A graph is a pictorial representation of a set of objects where some pairs of objects are connected by links. The interconnected objects are represented by points termed as vertices, and the links that connect the vertices are called edges.
+
+Types of Graphs
+Undirected Graph
+Directed Graph
+
+Depth First Search
+Theory of Graph Traversal Techniques
+In computer science, graph traversal (also known as graph search) refers to the process of visiting (checking and/or updating) each vertex in a graph. Such traversals are classified by the order in which the vertices are visited. Tree traversal is a special case of graph traversal.
+
+Techniques of Graph Traversal
+DFS- A depth-first search (DFS) is an algorithm for traversing a finite graph. DFS visits the child vertices before visiting the sibling vertices, that is, it traverses the depth of any particular path before exploring its breadth. A stack (often the program's call stack via recursion) is generally used when implementing the algorithm.
+BFS- A breadth-first search (BFS) is another technique for traversing a finite graph. BFS visits the neighbour vertices before visiting the child vertices, and a queue is used in the search process. This algorithm is often used to find the shortest path from one vertex to another.
+
+Differences between BFS and DFS
+Key differences between BFS and DFS
+
+BFS is a vertex-based algorithm while DFS is an edge-based algorithm.
+Queue data structure is used in BFS. On the other hand, DFS uses stack or recursion.
+Memory space is efficiently utilized in DFS while space utilization in BFS is not effective.
+BFS is an optimal algorithm while DFS is not optimal.
+DFS constructs narrow and long trees whereas BFS constructs wide and short trees.
+BFS traversal on example graph
+We have a graph whose vertices are A, B, C, D, E, F, G. Considering A as the starting point, the steps involved in the process are:
+Vertex A is expanded and stored in the queue.
+Vertices B, D, and G, as successors of A, are expanded and stored in the queue. Meanwhile, Vertex A is removed.
+Now B at the front end of the queue is removed along with storing its successor vertices E and F.
+Vertex D at the front end of the queue is removed, and its connected node F has already been visited.
+Vertex G is removed from the queue, and it has successor E which has already been visited.
+Now E and F are removed from the queue, and its successor vertex C is traversed and stored in the queue.
+At last C is also removed and the queue is now empty which means we are done.
+The generated Output is – A, B, D, G, E, F, C.
+
+DFS traversal on example graph
+Similar to BFS, let's take the same graph for performing DFS operations. The steps involved in the process are:
+
+Considering A as the starting vertex which is explored and stored in the stack.
+B, the successor vertex of A, is stored in the stack.
+Vertex B has two successors E and F, among them alphabetically E is explored first and stored in the stack.
+The successor of vertex E, i.e., G is stored in the stack.
+Vertex G has two connected vertices, and both are already visited, so G is popped out from the stack.
+Similarly, E is also removed.
+Now vertex B is at the top of the stack, its other successor(vertex) F is explored and stored in the stack.
+Vertex F has two successors C and D, between which C is traversed first and stored in the stack.
+Vertex C has only one predecessor which has already been visited, so it is removed from the stack.
+Now vertex D, which is connected to F is visited and stored in the stack.
+Since vertex D does not have any unvisited nodes, D is therefore removed.
+Similarly, F, B and A are also popped from the stack.
+The generated output is – A, B, E, G, F, C, D.
+
+
+\n\n
+
+Fourier Transform
+A number can be represented in many ways such as decimal, binary, hexadecimal etc. (ex. 15dec = 1111binary = Fhex). Likewise, a signal can also be represented in many ways that are more convenient for certain types of analysis. The most common representation is the Fourier transform which converts a spatial domain image into a spatial-frequency domain representation.
+
+The Fourier transform (FT) is a way to express the imageÂ in terms of a set of pure sinusoidal functions. It transforms the image from spatial domain to frequency domain. In FT image , each pixel represents a particular frequency contained in spatial domain image.
+
+The Fourier Transform is a mathematical operation that decomposes a function into its constituent frequencies, essentially representing a signal in terms of its frequency components rather than its time domain representation; it does this by transforming a function of time (f(t)) into a function of frequency (F(ω)) using an integral formula: 
+Forward Fourier Transform:
+equation.
+F(ω) = ∫_{-∞}^{+∞} f(t) * e^(-iωt) dt 
+Where:
+F(ω) is the Fourier transform of f(t) at frequency ω
+f(t) is the function being transformed
+ω is the angular frequency
+i is the imaginary unit
+Inverse Fourier Transform:
+equation.
+f(t) = (1/2π) ∫_{-∞}^{+∞} F(ω) * e^(iωt) dω 
+Where:
+f(t) is the original function recovered from its Fourier transform
+F(ω) is the Fourier transform of f(t)
+Key points about the Fourier Transform:
+Interpretation:
+The Fourier Transform tells you how much of each frequency component is present in a signal. 
+Applications:
+Signal processing, image analysis, wave mechanics, solving differential equations, and more. 
+Properties:
+Linearity: The Fourier transform of a linear combination of functions is the same linear combination of their individual Fourier transforms. 
+Time-frequency duality: Differentiating a function in the time domain corresponds to multiplication by frequency in the frequency domain, and vice versa. 
+Convolution theorem: The Fourier transform of the convolution of two functions is the product of their individual Fourier transforms. 
+
+\n\N
+
+Molecular Dynamics Simulation: GROMACS
+Introduction
+Understanding macromolecular structure and molecular interactions of biological molecules is important for identifying its biological function. Presently, most structural biology and molecular biology studies focus on Protein Data Bank (PDB) for studying the structural data of biological molecules such as proteins and nucleic acids. The structure of protein and nucleic acids are flexible, and it is noted that dynamics can play an important role in their functional aspects. Protein structure undergoes conformational changes during catalytic cycle and conformational changes associated with nucleic acids (for example, B-DNA) represents the need of dynamic properties into account for reducing the redundancy by PDB database. Traditional experimental approaches enable us to understand macromolecular function, resent advances in simulation algorithms performance improve conformational sampling of molecules that are alternatives to PDB’s structure.
+
+Theory
+Molecular dynamics (MD) defines simulating molecular motion by iterative methods of Newton’s laws of motion. In the biological field, these computational simulations were applied to large biomolecules including proteins and nucleic acids for studying the behavior of specific atoms and molecules over time. On a broader sense, prediction of protein-protein interaction network is a demanding field in systems biology for understanding 3D structures of protein or nucleic acids in both theoretical and experimental concepts. In all these experimental scenarios, the atomic motion is determined by applying equations of motion with mathematical integration. Mathematical models called force fields describe the energy dependence of a system on the coordinates of its particles. It provides position and velocities of the particles at very small-time intervals thereby quantitatively measuring potential energy. Initially these force fields were designed to study hydrocarbons, later extended to study the functions and dynamics of organic molecules or functionalized molecules such as alcohols, ethers, sulphides, amides and so on. These molecular dynamics simulations are computationally intensive and need expensive computational resources. For running these simulations, the specific need is high-performance computing clusters, with interconnected computing facility for performing complex computations parallelly and specialized hardware including GPUs (graphics processing units) for quick access to mathematical calculations. Such specificities will reduce the total simulation time by dividing the complex tasks into smaller ones that can be run simultaneously to generate the output.
+
+Based on specific requirements, many popular force fields exist for molecular dynamics (MD) simulations. Universal (UFF) force fields, CHARMM, AMBER , GROMOS OPLS, and COMPASS, GROMACS are few examples of molecular simulation platforms. UFF - Universal (UFF) force fields have parameters for all the atoms in the periodic table. CHARMM (Chemistry at Harvard Macromolecular Mechanics), AMBER (Assisted Model Building with Energy Refinement), GROMOS (Groningen Molecular Simulation) have been specifically employed for simulations of biomolecules such as proteins, nucleic acids, and lipids and for computationally reproducing experimental data for drug discovery. OPLS (Optimized Potential for Liquid Simulations) are specific for prediction of thermodynamics of liquids, quantum mechanics and simulation of biomolecules. COMPASS (Condensed-phase Optimized Molecular Potentials for Atomistic Simulation Studies) were specific to simulate condensed-phase environments, including molecules in liquids and solid phases. General polarizable force fields which employes electric dipoles for understanding the behavior of molecules were also employed for improving the accuracy of molecular simulations and followed by molecular visualizations for experimental purposes. PIPF (polarizable intermolecular potential function) and AMOEBA (Atomic Multipole Optimized Energetics for Biomolecular Applications) are examples of molecular simulations employing polarizations to study intermolecular interactions in biomolecules. These simulation platforms were compatible with the messaging passing interface (MPI), approximately reducing the computation time.
+
+ 
+
+GROMACS
+GROningen MAchine for Chemical Simulations (GROMACS), a most widely used open-source and free software codes specific for chemistry as a purpose for dynamical simulations of biomolecules including proteins, nucleic acids and lipids applying Newton’s equation creating a virtual molecular model at user-end. It has mostly two million lines of code for elaborating multi-level parallelism, providing multiple program paths and domains within specific simulations, multiple cores working on specific domain, and in exploiting instruction-level parallelism across specific domains of interest. GROMACS simulation has evolved from small-scale efficiency and extended to heterogeneous parallelization setup with both CPUs and GPUs. It has hardware features with a combination of SIMD and MPI-based Multiple Instruction, Multiple Data (MIMD) parallelism, where GPUs accelerates computing efficiency of interactions that are offloaded from the CPU leading to multi-level parallelism with a target of supercomputing features.
+
+Process and Steps in GROMACS
+The following multiple steps describe the process for molecular dynamics simulation using GROMACS.
+
+Initial setup
+
+Energy minimization
+
+Equilibration
+
+Production simulation
+
+To study the steps in GROMACS, hen egg white lysozyme, a highly stable globular protein is taken as an example (Figure 1). It has the capability to break down polysaccharides that cleaves β(1→4) glycosidic linkage between alternating units of N-acetylmuramic acid and N-acetylglucosamine of the bacterial cell wall.
+
+
+Figure 1: Structure of lysozyme (Adapted from https://training.galaxyproject.org/training-material/topics/computational-chemistry/tutorials/md-simulation-gromacs/tutorial.html)
+
+Initial Step
+The initial setup of performing simulation is retrieving the three-dimensional structure of the biomolecule from Protein Data Bank (PDB). All the unwanted atoms and solvent molecules are removed using grep text processing tool. Preparing topology for the cleaned protein structure is the next step, which will provide atom masses, bond lengths and angles, charges of the protein molecule for simulation. The detailed overview of the amino acids for the given force field is priorly calculated for creating the topology file. Here, OPLS/AA force field, that is all-atom optimized potentials for liquid simulations and SPC/E water model which provides best bulk water dynamics and structure are used. This creates a GRO structure file that stores the protein structure.‘Position restraint file to fix reference positions is also created in the initial setup of GROMACS. The created topology file provides all the description related to protein/peptide interactions. Solvating the simulating environment by defining the box and adding molecules is the next step after creating the topology files. GROMACS structure configuration tool refers to simulation box, a unit cell box to place this topology. The simulation box has varying dimensions and shapes including cuboidal box, rhombic dodecahedron and so on. For studying molecular dynamics of proteins rhombic dodecahedron is preferred as it reduces the resources for simulation as per the solvent. GROMACS solvation and adding ions functions in protein solvation, where water molecules get added to protein structure and topology file filling the unit cell. Subsequently Sodium and chloride ions get added to the system for neutralization.
+
+Energy minimization
+The system is first checked for steric clashes as well as inappropriate geometry. Energy minimization helps in optimizing atomic positions and in reducing unwanted steric interactions in the system. Input file for energy minimization .mdp file has been created including force field, integration parameters for Newton’s equations of motion, algorithm for integrating Newton’s equations of motion, algorithm for integration of kinetic energy etc. and energy minimization algorithm. After assembling the structure, topology, and simulation parameters into a binary input file (.tpr),energy minimisation algorithm is executed. The energy minimised file is refered to as the em.gro is obtained along with a log file, energy file and a trajectory file. After EM, the results are validated by looking at the potential energy which should be negative and the max force should be less than 1000kJ/(mol nm).
+
+Equilibration
+Before starting the dynamics, the ions and the solvent around the protein have to be equilibrated for which the ions and solvents have to be optimized. In the equilibration step, a stable state is attained by equilibrating the solvent around the solute protein molecule. This includes two steps NVT equilibration (isothermal-isochoric) and NPT (isothermal-isobaric) equilibration. In NVT equilibration, the system attains constant temperature distribution, number of particle and volume of the system. The time taken for equilibration depends on the size of the system and complexity. Pressure equilibration is achieved by NPT equilibration method where number of particles, pressure and temperature remains constant
+
+Production simulation
+After the equilibration process, the production simulation begins, where the system simulates longer period with molecular dynamics algorithms for integrating Newton’s Laws of motion, measuring velocity, force, and position of the atoms. Most simulation time varies between nanoseconds to microseconds depending on the goal of the study. This is followed by data analysis from the trajectory data for calculating the dynamic properties of the protein molecule. The steps in molecular dynamics simulation using GROMACS were illustrated in Figure 2.
+
+
+Figure 2: Steps in Molecular Simulation Using GROMACS (adapted from https://manual.gromacs.org/current/user-guide/flow.html)
+
+Gromacs File Representations
+Molecular topology file (.top file), Molecular Structure File ( .pdf file and .gro file), Molecular Dynamics parameter file (.mdp), Index file (.ndx), Run input file (.tpr), Trajectory file (.trr)
+
+
+\n\N
+
+Venturi-Meter
+The Venturi meter used in this experiment consists of successive converging, uniform and diverging sections equipped with pressure taps at selected locations. A Venturi meter is a device for determining the flow-rate of a fluid down a pipe. One measures the pressure difference between the venture inlet and neck, and from this the flow-rate can be determined.
+
+The main aim is to study the variation of Cod and discharge with respect the head by plotting the following graphs:
+
+Q_a Vs √h
+Q_a Vs h
+Taking √h and h on x-axis and Q_a on y-axis
+
+
