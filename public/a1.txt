@@ -1,0 +1,169 @@
+Bubble Sort
+Definition:
+Bubble Sort is a simple sorting algorithm that repeatedly steps through the list, compares adjacent elements, and swaps them if they are in the wrong order. This process is repeated until the list is sorted.
+
+Key Characteristics:
+
+Time Complexity:
+
+Best Case: 
+O(n)(when the list is already sorted)
+
+Worst Case: 
+O(n^2) (when the list is in reverse order)
+
+Space Complexity: 
+O(1) (in-place sorting)
+
+Stability: Stable (does not change the relative order of equal elements)
+
+Algorithm Steps:
+
+Start from the first element and compare it with the next element.
+
+If the current element is greater than the next element, swap them.
+
+Move to the next pair of elements and repeat the process.
+
+Continue this process for each element in the list.
+
+Repeat the entire process until no swaps are needed (list is sorted).
+
+Example (Python Implementation):
+
+def bubble_sort(arr):
+    n = len(arr)
+    for i in range(n):
+        swapped = False
+        for j in range(0, n-i-1):
+            if arr[j] > arr[j+1]:
+                arr[j], arr[j+1] = arr[j+1], arr[j]  # Swap
+                swapped = True
+        if not swapped:
+            break  # Stop if no swaps occurred (list is sorted)
+    return arr
+\n\n
+Building POS Tagger
+In corpus linguistics, part-of-speech tagging (POS tagging or POST), also called grammatical tagging or word-category disambiguation, is the process of marking up a word in a text (corpus) as corresponding to a particular part of speech, based on both its definition, as well as its context i.e. relationship with adjacent and related words in a phrase, sentence, or paragraph. A simplified form of this is identification of words as nouns, verbs, adjectives, adverbs, etc. Once performed by hand, POS tagging is now done in the context of computational linguistics, using algorithms which associate discrete terms, as well as hidden parts of speech, in accordance with a set of descriptive tags. POS-tagging algorithms fall into two distinctive groups: rule-based and stochastic.
+Hidden Markov Model
+In the mid 1980s, researchers in Europe began to use Hidden Markov models (HMMs) to disambiguate parts of speech. HMMs involve counting cases, and making a table of the probabilities of certain sequences. For example, once you've seen an article such as 'the', perhaps the next word is a noun 40% of the time, an adjective 40%, and a number 20%. Knowing this, a program can decide that "can" in "the can" is far more likely to be a noun than a verb or a modal. The same method can of course be used to benefit from knowledge about following words.
+
+More advanced ("higher order") HMMs learn the probabilities not only of pairs, but triples or even larger sequences. So, for example, if you've just seen an article and a verb, the next item may be very likely a preposition, article, or noun, but much less likely another verb.
+
+When several ambiguous words occur together, the possibilities multiply. However, it is easy to enumerate every combination and to assign a relative probability to each one, by multiplying together the probabilities of each choice in turn.
+
+It is worth remembering, as Eugene Charniak points out in Statistical techniques for natural language parsing, that merely assigning the most common tag to each known word and the tag "proper noun" to all unknowns, will approach 90% accuracy because many words are unambiguous.
+
+HMMs underlie the functioning of stochastic taggers and are used in various algorithms. Accuracies for one such algorithm (TnT) on various training data is shown here.
+
+Conditional Random Field
+Conditional random fields (CRFs) are a class of statistical modelling method often applied in machine learning, where they are used for structured prediction. Whereas an ordinary classifier predicts a label for a single sample without regard to "neighboring" samples, a CRF can take context into account. Since it can consider context, therefore CRF can be used in Natural Language Processing. Hence, Parts of Speech tagging is also possible. It predicts the POS using the lexicons as the context.
+
+If only one neighbour is considered as a context, then it is called bigram. Similarly, two neighbours as the context is called trigram. In this experiment, size of training corpus and context were varied to know their importance.
+
+The objective of the experiment is to know the importance of context and size of training corpus in learning Parts of Speech
+
+\n\n
+Bubble Sort
+Definition:
+Bubble Sort is a simple sorting algorithm that repeatedly steps through the list, compares adjacent elements, and swaps them if they are in the wrong order. This process is repeated until the list is sorted.
+
+Key Characteristics:
+
+Time Complexity:
+
+Best Case: 
+O(n)(when the list is already sorted)
+
+Worst Case: 
+O(n^2) (when the list is in reverse order)
+
+Space Complexity: 
+O(1) (in-place sorting)
+
+Stability: Stable (does not change the relative order of equal elements)
+
+Algorithm Steps:
+
+Start from the first element and compare it with the next element.
+
+If the current element is greater than the next element, swap them.
+
+Move to the next pair of elements and repeat the process.
+
+Continue this process for each element in the list.
+
+Repeat the entire process until no swaps are needed (list is sorted).
+
+Example (Python Implementation):
+
+def bubble_sort(arr):
+    n = len(arr)
+    for i in range(n):
+        swapped = False
+        for j in range(0, n-i-1):
+            if arr[j] > arr[j+1]:
+                arr[j], arr[j+1] = arr[j+1], arr[j]  # Swap
+                swapped = True
+        if not swapped:
+            break  # Stop if no swaps occurred (list is sorted)
+    return arr
+
+\n\n
+
+
+ALU (Arithmetic Logic Unit) with Functions
+Definition:
+The Arithmetic Logic Unit (ALU) is a fundamental component of a computer's CPU that performs arithmetic and logical operations.
+
+Key Functions:
+
+1.Arithmetic Operations:
+
+Addition, Subtraction, Multiplication, Division
+
+Increment/Decrement
+
+2.Logical Operations:
+
+AND, OR, NOT, XOR
+
+Bitwise Shifts (Left Shift, Right Shift)
+
+3.Comparison Operations:
+
+Equal to, Greater than, Less than
+
+Zero Detection
+
+->Components of ALU:
+
+Input Registers: Store operands for operations.
+
+Output Register: Stores the result of operations.
+
+Control Signals: Determine which operation to perform.
+
+Flags: Indicate the status of operations (e.g., overflow, zero result).
+
+Example (Simple ALU Operations):
+
+def ALU(operation, a, b):
+    if operation == "ADD":
+        return a + b
+    elif operation == "SUB":
+        return a - b
+    elif operation == "AND":
+        return a & b
+    elif operation == "OR":
+        return a | b
+    elif operation == "XOR":
+        return a ^ b
+    else:
+        raise ValueError("Unsupported operation")
+Role in CPU:
+
+The ALU works in conjunction with the Control Unit and registers to execute instructions.
+
+It performs calculations and logical decisions required by programs.
+

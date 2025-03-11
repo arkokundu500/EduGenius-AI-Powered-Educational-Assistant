@@ -1,0 +1,32 @@
+Virtual Memory
+Definition:
+Virtual Memory is a memory management technique that provides an "idealized abstraction of the storage resources" available on a machine. It allows a computer to use more memory than is physically available by temporarily transferring data to disk storage.
+
+Key Concepts:
+
+Paging: Divides memory into fixed-size blocks called pages.
+
+Page Table: Maps virtual addresses to physical addresses.
+
+Page Fault: Occurs when a program accesses a page not currently in RAM, triggering the OS to load it from disk.
+
+Swap Space: Disk space used to store inactive pages.
+
+Advantages:
+
+Allows running large programs even with limited physical RAM.
+
+Provides memory isolation and protection between processes.
+
+Enables efficient use of memory by loading only required pages.
+
+How It Works:
+
+Programs use virtual addresses instead of physical addresses.
+
+The OS and hardware translate virtual addresses to physical addresses using the page table.
+
+If a page is not in RAM (page fault), it is loaded from disk.
+
+Inactive pages are swapped out to disk to free up RAM.
+

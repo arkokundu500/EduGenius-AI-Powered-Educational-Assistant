@@ -1,0 +1,55 @@
+ALU (Arithmetic Logic Unit) with Functions
+Definition:
+The Arithmetic Logic Unit (ALU) is a fundamental component of a computer's CPU that performs arithmetic and logical operations.
+
+Key Functions:
+
+1.Arithmetic Operations:
+
+Addition, Subtraction, Multiplication, Division
+
+Increment/Decrement
+
+2.Logical Operations:
+
+AND, OR, NOT, XOR
+
+Bitwise Shifts (Left Shift, Right Shift)
+
+3.Comparison Operations:
+
+Equal to, Greater than, Less than
+
+Zero Detection
+
+->Components of ALU:
+
+Input Registers: Store operands for operations.
+
+Output Register: Stores the result of operations.
+
+Control Signals: Determine which operation to perform.
+
+Flags: Indicate the status of operations (e.g., overflow, zero result).
+
+Example (Simple ALU Operations):
+
+def ALU(operation, a, b):
+    if operation == "ADD":
+        return a + b
+    elif operation == "SUB":
+        return a - b
+    elif operation == "AND":
+        return a & b
+    elif operation == "OR":
+        return a | b
+    elif operation == "XOR":
+        return a ^ b
+    else:
+        raise ValueError("Unsupported operation")
+Role in CPU:
+
+The ALU works in conjunction with the Control Unit and registers to execute instructions.
+
+It performs calculations and logical decisions required by programs.
+
