@@ -1,6 +1,7 @@
-First run the command
+#First run the command
 >pip install -r requirements.txt
-Then run chat.py by using the command
+
+#Then run chat.py by using the command
 >streamlit run chat.py
 
 Create a .env file and make a folder in .streamlit/secrets/toml put in the gemini api key there as :
