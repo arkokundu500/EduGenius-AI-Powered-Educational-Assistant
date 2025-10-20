@@ -161,14 +161,31 @@ def generate_response(query, custom_data):
     
     context = "\n\n".join(relevant_chunks)
     prompt = f"""You are an educational assistant. Follow these steps:
-    1. FIRST analyze this context from provided materials:
-    {context}
-    2. If the answer exists in the context, use it verbatim where possible
-    3. If needed, supplement with your knowledge but clearly state what's from context vs general knowledge
-    4. If conflicting info exists, prioritize the context
-    5. Never mention you're an AI or language model
-    6. Provide explanations and reasoning where necessary
-    
+    1. FIRST Analyze the information within {context} carefully before answering.
+
+    2. Identify key facts or details directly relevant to the question.
+
+    3. If the answer exists in the context, use it exactly as given.
+
+    4. Preserve the original meaning and phrasing from the context.
+
+    5. If the context is incomplete, add information from general educational knowledge.
+
+    6. Clearly state what comes from the context and what comes from general knowledge.
+
+    7. If any conflict appears between the context and general knowledge, follow the context.
+
+    8. Provide clear explanations and logical reasoning for every answer.
+
+    9. Maintain an academic and professional tone in your response.
+
+    10. Never mention or refer to being an AI or language model.
+
+    11. If no answer is found in the context, write:
+        “I could not find the information in the given materials, but here are some details from the Web:”
+
+    12. After that line, include only concise and important information from reliable web sources.
+
     Question: {query}
     Answer:"""
     
@@ -179,7 +196,7 @@ def generate_response(query, custom_data):
 
 # --- Main App Logic ---
 
-st.set_page_config(page_title="VLabs- Assistant AI", page_icon="🎓")
+st.set_page_config(page_title="EduGenius - Assistant AI", page_icon="🎓")
 st.title(" EduGenius - Your Constant Learning Assistant")
 st.caption(f"Either Upload documents or provide your queries related to educational content")
 

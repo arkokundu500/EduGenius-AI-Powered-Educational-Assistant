@@ -1,0 +1,1185 @@
+Module 1: Analysis of Algorithm 
+Aim : T
+he goal of analysis of algorithms is to 
+compare algorithms mainly in terms of running time 
+but also in terms of other factors like memory, 
+developer effort. 
+Need
+ for Analysis (Why to analyze || What to 
+analyze || How to analyze) 
+1.
+To determine resource consumption
+<resource such that
+space+time+cost+register>
+Resources may differ from domain to
+domain.
+2.
+Performance comparison to find out efficient
+solution
+Me
+thodology of algorithm 
+● Depends on language
+● Operating system
+● Hardware (CPU, processor, memory,
+Input/output)
+Types of analysis 
+1. Aposteriori analysis(platform dependent) : It gives
+exact value in real units.
+2. Apriori analysis(platform independent)  : It allows
+us to calculate the relative efficient performance of
+two algorithms in a way such that it is platform
+independent. It will not give real values in units.
+As
+ymptotic Notations 
+θ-Notation 
+Let f(n) and g(n) be two positive functions 
+f(n) = θ(g(n)) if and only if 
+f(n) ≤ c1 . g(n) and f(n) ≥ c2 . g(n) 
+∀ n ≥ n0 such that there exists three positive constant 
+c1 > 0, c2 > 0 and n0 ≥ 1 
+O-
+Notation [Pronounced “big-oh”]
+Let f(n) and g(n) be two positive functions
+f(n) = O(g(n)), if and only if
+f(n) ≤ c . g(n), ∃ n, ≥ n0
+such that $ two positive constants c > 0, n0 ≥ 1.
+Ω-No
+tation: [Pronounced “big-omega”] 
+Ω notation provides an asymptotic lower bound for a 
+given function g(n), denoted by Ω (g(n)). The set of 
+functions f(n) = Ω(g(n)) if and only if f(n) ≥ c . g(n), ∀ n ≥ 
+n0 such that  two positive constants c > 0, n0 ≥ 1. 
+An
+alogy between real no & asymptotic notation 
+: Let a, b are two real no & f, g two positive 
+functions 
+If f(n) is O(g(n)) : a ≤ b  
+● If
+ f(n) is Ω(g(n)) : a ≥ b
+● If f(n) is Θ(g(n)) : a = b
+● If f(n) is o(g(n)) : a < b
+● If f(n) is ω(g(n)) : a > b
+Ra
+te of growth of function 
+[Highest]   —> n! —> 4n —> 2n —> n² —> 
+nlogn —>log(n!) —> n —> 2logn —> log² n —> 
+log logn —> 1 [lowest] 
+Tri
+chotomy property: 
+For any two real numbers (a, b) there must be a 
+relation between them 
+(a > b, a < b, a = b) 
+ALGORITHMS
+GATE फर्रे 
+Page No:- 01
+Asymptotic notation does not satisfy trichotomy 
+property 
+ex: f(n) = n, g(n) = n * |sin(n)|, n > 0 
+∴ These two functions cannot converge 
+E
+xample 
+1. Loop
+for ( i = 1; i <= n; i++) { 
+x=y+z; 
+} 
+T(n) = O(n) 
+2. Nested loop
+for(i=1; i<=n; i++){ 
+for(j=1; j<=n; j++){ 
+k= k+1; 
+} 
+} 
+T(n) = O(n2) 
+3. Logarithm
+for(i=1; i<=n ; i *= 2){ 
+k=k+1; 
+} 
+for (int i = 1; i <= n; i++) { 
+    for (int j = 1; j <= n; j *= 2) { 
+  printf(“GFG”); 
+    } 
+} 
+T(n) = O(n log n) 
+4. Linear recursion:
+void fun(int n) { 
+    if (n > 0) { 
+  fun(n - 1); 
+    } 
+} 
+T(n) = T(n-1) + C 
+T(n) = O(n) 
+5. Recursive with logarithmic loop
+void fun(int n) { 
+    if (n > 1) { 
+  fun(n / 2);           // Recursive call first  
+  for (int i = 1; i <= n; i *= 2) { 
+ printf("Hello\n"); 
+  } 
+    } 
+} 
+T(n) =  T(n/2) + O(log n) 
+T(n) = O(log
+2 n) 
+6. Time is infinite
+c= 0; 
+while(1) 
+C += 1; 
+7. Mutually Exclusive Loops
+1. For i←1 to n: C=C+1;
+2. For j←1 to m: K=K∗2;
+Time = O(max(n, m)) 
+8. N
+ested loop analysis
+for (i = 1; i <= n; ++i) // Executes 'n' times  
+for (j = 1; j <= n; ++j) // Executes 'n' times  
+for (k = n/2; k <= n; k += n/2) // Executes 2 times (n/2, 
+n)  
+C = C + H; 
+Time  = O(n
+2) 
+for(i=1;i<n;i = i+a) 
+Time : O(n/a) = O(n) 
+9. For a loop with a multiplicative increment:
+for (i=1;i<=n;i=i∗2): This loop's complexity is Log2n. 
+for (i=1;i<=n;i=i∗3): This loop's complexity is Log3n. 
+for (i=1;i<=n;i=i∗a); 
+General formula: The time complexity is 
+O(logan). 
+k
+=1, i=1 
+while(k<=n){ 
+i++; 
+k=k+i; 
+} 
+Time complexity : T(n) = O(√n) 
+for (i = n; i >= 2; i = sqrt(i)) 
+Time complexity: O(log log n). 
+10. for (i = 2; i <= n; i++) { // log logn
+for (j = 1; j <= i; j++) { 
+for (k = 1; k <= n; k +=j) { // n/j ,  where j = 1,2,3,..n 
+x = y + z; 
+... 
+} 
+} 
+} 
+T(m) = O(log logn (n logn)) 
+ALGORITHMS
+GATE फर्रे 
+Page No:- 02
+Master Theorem: 
+Let f(n) is a positive function and T (n) is defined 
+recurrence relation:   
+T(n) = aT(n/b) + f(n) 
+Where a >= 1 and b > 1 are two positive constants. 
+Case 1:  
+If f(n) = O(n(logb a−∈)) for some constant ∈ > o then T(n) 
+= θ (n(logb a) ) 
+Case 2: 
+If f(n) = θ (n(logb a) ), then T(n) = θ (n(logb a) *log n) 
+Case 3: 
+If f(n) = Ω (n(logb a+∈)) for some constant ∈> 0, and if a
+f
+ (n/b) ≤ cf(n) for some constant c < 1 and all 
+sufficiently large n, then T(n) = θ(f(n)) 
+M
+aster theorem for subtract and conquer 
+recurrence: 
+Let T(n) be a function defined on possible n: 
+T(n) = aT(n-b) + f(n), if n > 1 
+T(n) = C, if n <= 1 
+For some constant C,  a>0, b>0, and f(n) = O(nd) 
+1. T
+(n) = O(nd) , if a < 1
+2. T
+(n) = O(nd+1) , if a = 1
+3. T
+(n) = O(nd * a(n/b)) , if a > 1
+C
+ommon Recurrence Relation 
+A
+nalogy between real no & asymptotic notation 
+Let a, b are two real no & f, g two positive functions 
+● If f(n) is O(g(n)) : a ≤ b (f grows slower than
+so
+me multiple of g)
+● If f(n) is Ω(g(n)) : a ≥ b (f grows faster than
+some multiple of g)
+● If f(n) is Θ(g(n)) : a = b (f grows at same rate of
+g)
+● If f(n) is o(g(n)) : a < b (f grows slower than any
+mult
+iple of g)
+● If f(n) is ω(g(n)) : a > b (f grows faster than any
+mul
+tiple of g)
+Analysis 
+1. f(n) = n!
+n! <= c*n
+n : n >= 2
+n! = O(nn) with c = 1, n0 = 2.
+using stirling’s approximation : n! ≈ √(2nπ) nn *
+e-n
+Recurrence relation Time 
+complexity 
+T (n) = C; n = 2 
+T (n) = 2 T(√𝑛𝑛) + C; n > 2 
+O(logn) 
+T (n) = C; n = 2 
+T (n) = T(n – 1) + C ; n > 2 
+O(n) 
+T (n) = C; n = 1 
+T (n) = T(n – 1) + n + C ; n > 2 
+O(n^2) 
+T(n) = C ; n = 1 
+T(n) = T(n-1) * n  + C ; n > 2 
+O(n^n) 
+T(n) = C ; n = 1 
+T(n) = 2T(n/2) + C ; n > 1 
+O(n) 
+T(n) = C ; n = 1 
+T(n) = 2T(n/2) + C ; n > 2 
+O(nlogn) 
+T(n) = C ; n = 1 
+T(n) = T(n/2) + C ; n > 1 
+O(logn) 
+T (n) = 1; n = 2 
+T(n) = T( n ) + C; n > 2 
+Θ(loglogn) 
+T(n) = T(n/2) + 2^n  if n > 1 O(2^n) 
+ALGORITHMS
+GATE फर्रे 
+Page No:- 03
+Discrete Properties of Asymptotic Notation 
+A
+nalogy between real no & asymptotic notation 
+Let a, b are two real no & f, g two positive functions 
+● If f(n) is O(g(n)) : a ≤ b (f grows slower than some
+mul
+tiple of g)
+● If f(n) is Ω(g(n)) : a ≥ b (f grows faster than some
+mul
+tiple of g)
+● If f(n) is Θ(g(n)) : a = b (f grows at same rate of g)
+● If f(n) is o(g(n)) : a < b (f grows slower than any
+mul
+tiple of g)
+● If f(n) is ω(g(n)) : a > b (f grows faster than any
+mul
+tiple of g)
+Analysis
+1. f(n) = n!
+n! <= c*n^n : n >= 2
+n! = O(n^n) with c = 1, n0 = 2.
+using stirling’s approximation : n! ≈ √(2nπ) n^n *
+ e
+^ -
+n
+T
+richotomy property:
+For any two real numbers (a, b) there must be a
+relation between them
+(a > b, a < b, a = b)
+A
+symptotic notation does not satisfy trichotomy
+property
+Ex: f(n) = n, g(n) = n ^ |sin(n)|, n > 0
+∴ These two functions cannot converge
+1. Reflexive
+f(n) = O(f(n))
+f(n) = Ω(f(n))
+f(n) = Θ(f(n))
+2. S
+ymmetric
+f(n) = Θ(g(n)), iff g(n) = Θ(f(n))
+3. Tr
+ansitive
+f(n) = Θ(g(n)) & g(n) = O(h(n))
+f(n) = O(h(n))
+Note : Ω and Θ also satisfy transitivity
+4. T
+ranspose Symmetric
+f(n) = O(g(n)) iff g(n) = Ω(f(n))
+B est case(n) ≤ Average case(n) ≤ Worst case(n) 
+S
+pace Complexity 
+S
+pace required by algorithm to solve an instance of 
+the problem, excluding the space allocated to hold 
+input.  
+Space complexity : C + S(n) 
+C - Constant space 
+S(n) - Additional space that depends on input size n 
+S
+pace Complexity VS Auxiliary space 
+S
+pace Complexity = Total space used including input 
+Auxiliary space = Extra space used excluding the input 
+Property Big 
+Oh(O) 
+Big 
+Omega() 
+Theta() Small 
+oh(o) 
+Small 
+omega
+() 
+Reflexive ✓ ✓ ✓ × × 
+Symmetric × × ✓ × × 
+Transitive ✓ ✓ ✓ ✓ ✓ 
+Transpose 
+symmetric 
+✓ ✓ × ✓ ✓ 
+ALGORITHMS
+GATE फर्रे 
+Page No:- 04
+Space Complexity (Memory) 
+Example: 
+Algo sum(A, n){ 
+int n, a[], i; 
+int sum=0; 
+for(i=0; i<n; i++) 
+sum = sum+arr[i]; 
+} 
+Time complexity : O(n) 
+Space complexity : O(1) 
+Algo swapNum(int a, int b){ 
+int temp = a; 
+a = b; 
+b = temp; 
+} 
+Time complexity : O(1) 
+Auxiliary space : O(1) 
+ALGORITHMS
+GATE फर्रे 
+Page No:- 05
+Module 2 : Divide and Conquer (DAC) 
+No
+te : In DAC, divide and conquer is mandatory 
+but combine is optional. 
+● A
+lgorithm DAC(A, 1, n)
+● if(small(1, n)
+● return (S(A, 1, n);
+● Else
+● m ←– Divide(1, n)
+● S1 ←– DAC(A, 1, m)
+● S2 ←– DAC(A, m+1, n)
+● Combine (S1, S2);
+T
+ime Complexity for DAC Problem 
+T(n) = F(n), if n is small, 
+T(n) = 2T(n/2) + g(n) : if n is large 
+G
+eneralized Form : T(n) = aT(n/b) + g(n) 
+g(n) – +ve, a > 0, b > 0; 
+I
+ Symmetric form 
+T(n) = aT(n/b) + g(n) 
+a : number of sub-problem 
+b : size shrink factor(each sub-problem n/b) 
+g(n) : cost to divide and combine 
+eg. Merge sort : T(n)=2⋅T(2n)+O(n) 
+II A
+symmetric form 1 
+T(n) = T(αn) + T((1-α)n) + g(n) provide that : 0 < α < 
+1 
+eg: T(n) = T(n/3) + T(2n/3) + g(n)        
+III A
+symmetric form 2 
+T(n) = T(n/2) + T(n/4) + g(n) 
+ex. Quick sort with asymmetric partitioning   
+ALGORITHMS
+GATE फर्रे 
+Page No:- 06
+Divide and conquer problem 
+1. F
+inding minimum and maximum
+T
+(n) = 2T(n/2) + 2 , n>2
+Time complexity using DAC : T(n) = O(n)
+Space complexity using DAC :
+T
+(n) = O(logn)
+2
+. P
+ower of an element
+R
+ecurrence relation
+T(n) = 1 if n = 1
+T(n) = T(n/2) + C if n > 1
+Time complexity : O(logn)
+Space complexity : O(logn)
+3
+. B
+inary Search Algorithm
+N
+ote: Provided that list of elements already sorted.
+T
+(n) = c : n = 1
+T(n) = a + T(n/2) : n > 1
+Time complexity : T(n) = O(logn)
+Space complexity : T(n) = O(1)
+4. Me
+rge Sort Algorithm
+C
+omparison based sorting
+Stable sorting but outplace
+Recurrence relation: T(n) = c if n = 1
+T(n) = T(n/2) + T(n/2) + cn if n > 1
+T
+ime complexity = O(n log n)
+= Ω(n log n)
+= Θ(n log n)
+Space complexity : O(n + logn) = O(n)
+5
+. Q
+uick Sort Algorithm
+Best Case / Average Case
+T(n) = 1 ; if n = 1.
+T(n) = 2T(n/2) + n + C, if n>1
+Time complexity : O(n logn)
+Worst case : T(n) = n + T(n-1) + C ; if n > 1
+Note: Quick sort behaves in worst case w
+hen
+el
+ement are already sorted
+Time complexity : O(n^2)
+6. M
+atrix Multiplication
+I. U
+sing DAC: T(n) = 8T(n/2)+O(n^2), for n>1
+T
+(n) = O(n^3)
+II.
+Strassen’s matrix multiplication :
+T
+(n) = 7T(n/2) + a.n^2, for n > 1
+Time complexity : O(n^2.81) (by Strassen’s)
+Time complexity : O(n^2.37) (by Coppersmith and
+winograd)
+Space complexit
+y :
+7
+. S
+election Procedure (Find kth smallest on given an
+a
+rray of element and integer k)
+Time complexity : O(n^2)
+Space complexity : O(n)
+8. C
+ounting Number of Inversion (An inversion in an
+a
+rray is a pair(i, j) such that i<j and arr[i] > arr[j])
+Time complexity : O(nlogn)
+Space complexity : O(n)(due to merges)
+9
+. C
+losest pair of points (Find the minimum Euclidean
+d
+istance between any two points in a 2D plane.)
+Recurrence relation => T(n) = 2T(n/2) + O(n)
+Time complexity = O(nlogn)
+Sorting copies (x-sorted, y-sorted): O(n)
+Auxiliary space (recursion stack): O(log n)
+Space complexity : O(logn)
+10. Co
+nvex hull (Find smallest convex polygon that
+encloses a point in a 2D plane)
+T(n) = 2T(n/2) + O(n)
+Time complexity = O(nlogn)
+Space complexity : O(logn)
+N
+ote: In GATE exam if merge sort given then
+a
+lways consider outplace.
+• If
+ array size is very large, merge sort preferable.
+• If
+ array size is very small, then prefer insertion sort.
+• M
+erge sort is a stable sorting technique.
+ALGORITHMS
+GATE फर्रे 
+Page No:- 07
+11. Longest Integer multiplication(LIM)
+in
+t data type, can stores digits max 32767
+lo
+ng int data types, can store 4B/8B (8-10 digits
+number)
+ not more than that.
+So
+lution : We can store long integer multiplication
+i
+n an array.
+T
+(n) = 4T(n/2) + b.n ; if n>1
+Time complexity : O(n^2)
+Space complexity : O(logn)
+K
+aratsuba optimization :
+T(n) = 3T(n/2) + bn ; if n > 1
+Time complexity : O(n^1.58)
+Karatsuba is better but still not fast enough
+T
+oom cook optimization :
+Toom-Cook is a generalization of Karatsuba’s
+a
+lgorithm that splits the input numbers into three
+parts.
+T
+oom-3 (3-way split) 
+I. T(n) = 9T(n/3) + bn.
+Time complexity : O(n^2)
+II. T(n) = 8T(n/3) + bn.
+Time complexity :
+T
+(n) = xT(n/3) + bn
+for x = 5,
+T(n) = 5T(n/3) + bn
+Time complexity : O(O(n^1.464)
+G
+eneralised equation of time complexities of k-
+ways split 
+1. D
+AC : T(n) = kT(n/k) + bn
+2. K
+aratsuba : T(n) = (k^2 - 1)T(n/k) + bn
+3. T
+oom-cook : T(n) = (2k-)T(n/k) + bn
+T
+oom-4 exists but is less practical due to overhead. 
+ALGORITHMS
+GATE फर्रे 
+Page No:- 08
+Module 3 : Greedy Algorithm 
+T
+he greedy technique algorithm is a method that 
+makes the locally optimal choice at each step with 
+the hope of finding a global optimum, without 
+reconsidering previous choices. 
+A
+pplication of Greedy algorithm 
+1
+. J
+ob sequencing with deadline
+Schedule jobs to maximize profit before their
+d
+eadlines (one job per time slot).
+Sort jobs by profit (descending).
+Find maximum deadline in the given array of n-
+deadlines and take the array of maximum deadli
+nes
+s
+ize
+Schedule each job in the latest available slot
+before its deadline.
+T
+ime complexity
+Best case : O(nlogn)
+Worst case : O(n
+2)
+2. Op
+timal merge pattern (Huffman coding is one
+of its application)
+M
+erge n sorted files with minimum total cost
+(record movements).
+Always merge the two smallest files. Repeat until
+one file remains.
+Huffman coding is a direct application of the 
+optimal merge pattern. 
+Step to solve a problem : Create a min-heap 
+(priority queue) of all characters based on their 
+frequencies. 
+Repeat until the heap contains only one node: 
+(i)
+Ex
+tract the two nodes with the smallest
+frequencies.
+(ii) C
+reate a new internal node with:
+Frequency = sum of the two nodes.
+Left child = node with smaller frequency.
+ight child = node with larger frequency.
+(iii)
+Insert
+ this new node back into the heap.
+The remaining node is the root of the Huffman
+t
+ree.
+Time complexity : O(n log n)
+Space complexity : O(n)
+3. F
+ractional Knapsack
+M
+aximize profit with given weight capacity.
+Fractional items allowed.
+Sort by value/weight ratio. Pick greedy until
+capacity is full.
+for(i=1;i<=n;i++)
+a[i] = Profit(i)/weight(i)
+Take one by one object from a and keep i
+n
+k
+napsack until knapsack becomes full arrange array
+a
+ in ascending order
+Time complexity : O(n log n)
+4. A
+ctivity selection problem (You are given n
+a
+ctivities, each with a start time and finish time.
+T
+he goal is to select the maximum number of
+activities that can be performed by a single
+person, under the constraint that the person can
+w ork on only one activity at a time (i.e., no
+overlapping activities).
+Sort the activities by their finishing time (in
+ascending order).
+Select the first activity in the sorted list and
+include it in the final solution.
+Iterate through the remaining activities in t
+he
+so
+rted list:
+ALGORITHMS
+GATE फर्रे 
+Page No:- 09
+● For each activity, check if its start time is greater
+than or equal to the finish time of the last
+selected activity.
+● If the condition holds, select the activity and
+update the last selected finish time.
+T
+ime complexity 
+If 
+activities are not sorted by finish time: 
+● Sorting takes O(nlog⁡n)
+● Selecting activities takes O(n)O(n)O(n)
+● Total time = O(nlog⁡n)
+If activities are sorted by finish time:
+● Only the selection loop runs → O(n)
+● Total time = O(n)
+5. M
+inimum cost spanning tree
+I.
+Kruskal’s Minimum spanning tree algorithm
+It builds the Minimum Spanning Tree by always
+cho
+osing the next lightest edge that doesn't form
+a
+ cycle.
+Sort all edges of the graph in non-decreasing
+order of their weights.
+Initialize an empty set for the MST.
+For each edge in the sorted list:
+● If the edge does not form a cycle with the MST
+formed so far, include it in the MST. Otherwise
+d
+iscard the edge.
+Repeat until the MST includes V−1V - 1V−1 edges
+(
+where VVV is the number of vertices).
+Time complexity : O(E log E) or O(E log V)
+Note : Works well with sparse graphs (fewer
+edges). May produce a forest if the graph is not
+connected.
+II. Prim’s minimum spanning tree algorithm
+It builds the MST by growing it one vertex at a
+time, always choosing the minimum-weight edge
+that connects a vertex inside the MST to o
+ne
+o
+utside.
+Start with a random vertex, Initialize a MST set
+(vertices included in MST), and a priority queue (or
+min-heap) of edge weights.
+While the MST set does not include all vertices: 
+● Select the minimum-weight edge that connects a
+vertex in the MST to a vertex outside.
+● Add the selected edge and vertex to the MST.
+● More efficient for dense graph
+T
+ime complexity : 
+A
+djacency matrix + linear search = O(V^2) 
+Adjacency list + binary heap = O(E log V) 
+Adjacency list + Fibonacci heap = O(E + log V) 
+6. S
+ingle source shortest path algorithm
+I.
+Dijkstra’s algorithm
+Using min heap & adjacency list = O(E + V)logV
+Using adjacency Matrix & min heap = O(V^2 * E *
+logV)
+Using adjacency list & Unsorted array = O(V^2)
+Using adjacency list & sorted Doubly linked list =
+O(EV)
+II.
+Bellman Ford algorithm
+It finds the shortest path from source to every
+vert
+ex, if the graph doesn’t contain a negative
+w
+eight edge cycle.
+If a graph contains a negative weight cycle, it does
+no
+t compute the shortest path form source to all
+other vertices but it will report saying “negative
+weight cycle exists”.
+It finds shortest path from source to every vertex,
+Input : A weighted, directed graph G = (V+E), wit
+h
+ed
+ge weights w(u, v), and a source vertex s.
+Output : Shortest path distance from source s to all
+other vertices, or detection of a negative-weight.
+Time complexity : O(EV)
+ALGORITHMS
+GATE फर्रे 
+Page No:- 10
+Module 4 : Dynamic Programming 
+U
+se case of Tabulation and memoization method 
+● If the original problem requires all subproblems to
+be so
+lved, then tabulation is usually more efficient
+than memoization.
+● Tabulation avoids the overhead of recursion and
+can use a preallocated array, leading to better
+perf
+ormance in both time and space in some cases.
+● If only some subproblems are needed to solve the
+o
+riginal problem, then memoization is preferable,
+beca
+use it solves only the required subproblems
+(solved lazily, i.e., on-demand).
+1. L
+ongest common subsequence (LCS)
+Gi
+ven two strings, find the length of their longest
+subsequence that appears in both. Subsequence
+must be linear only not necessarily contiguous.
+I
+nput : x= <ABCD>, y = <BDC>
+Output : 2 <BC>
+L
+et, i & j denote indices of x & y. L(i, j) denote the
+L
+CS of string x & y , n & m are length respectively.
+L(i, j) = 1 + L(i-1, j-1) ; if x[i] = y[j]
+L(i, j) = max( L(i-1, j) , L(i , j-1) ; if x[i] != y[j]
+L(-i, j) = 0
+L(i, -j) = 0
+Time complexity : O(n * m)
+Space complexity : O(n * m)
+2
+. 0
+/1 Knapsack problem
+Input
+ : N items, each item has weight W[i], profit[i]
+and a knapsack with a minimum capacity M
+Objective : Total weight <= M, and total profit
+maximized. Each item can be either 1 (include) or 
+0
+(
+exclude)
+Recurrence relation
+KS(M, N) = 0 ; if M=0 or N=0
+KS(M, N) = 0 ; if W[N]>M
+KS(M, N) = max(K( M - W[N], N-1) + P[N], K(M, N-
+1)) ; otherwise
+T
+ime complexity : O(M * N) (We compute and 
+store results in a 2D of table of size M* N) 
+3
+. T
+ravelling salesman problem
+Gi
+ven a set of cities and distances between every
+pa
+ir of cities, the goal is to find the shortest
+possible tour that visits each city exactly once and
+returns to the starting city.
+This is equivalent to finding the minimum cost
+Hamiltonian cycle.
+A cost/distance function C(i, j) representing the cost
+to travel from city i to city j.
+TSP(A, R) be the minimum cost of visiting all cities
+in the set R, starting from city A.
+TSP = C( A, S )  ; if R = 0
+TSP = min( C(A, K ) + TSP(K, R-{K}) ; otherwise.
+Where A is current city
+R : set of unvisited cities
+S : Starting city
+C(A, K) : cost from city A to city K
+T
+ime complexity : (without dynamic programming)
+O (n^n) with dynamic programming O(2^n * n^2)
+Space complexity : O(2^n * n^2)
+4
+. M
+atrix chain multiplication
+Gi
+ven a sequence of matrices, find the most
+efficient order of multiplication of these matrices
+t
+ogether in order to minimize the number of
+multiplications.
+L
+et MCM(i, j) denote the minimum number of scaler
+mul
+tiplication required to multiply matrices from Ai
+to
+ Aj.
+MCM(i, j) = 0 ; i = j
+MCM(i, j) = min(MCM(i, k) + MCM(k + 1, j) + Pi-1 *
+P
+k * Pj) ; if i < j
+The cost of multiplying the resulting matrices is
+Pi
+−1⋅Pk⋅Pj
+The total number of ways to parenthesize the
+ma
+trix chain of n matrices :
+T
+(n) =∑𝑖𝑖−1
+𝑛𝑛−1   T(i)⋅T(n−i)
+Number of parenthesizing for a given chain
+represe
+nted by catalan number : ⌊1 / (n+1) (2𝑛𝑛𝑛𝑛𝑛𝑛)⌋
+ALGORITHMS
+GATE फर्रे 
+Page No:- 11
+Time complexity: 
+● Without DP : O(n!)
+● With DP : O(n^3)
+Space complexity:
+● Without DP : O(n)
+● With DP : O(n^2)
+5. Su
+m of subset problem
+Gi
+ven a set of numbers W[1...N] and a value M,
+d
+etermine if there exists a subset whose sum is
+e
+xactly M.
+R
+ecursive Relation:
+SoS(M, N, S) =
+    return(S)   ;          if M = 0  
+    return(-1)   ;             if N = 0  
+    SoS(M, N - 1, S)   ;     if W[N] > M  
+    min( 
+  SoS(M - W[N], N - 1, S ∪ {W[N]}), 
+  SoS(M, N - 1, S) 
+    ) ;    otherwise  
+Time complexity by brute force: O(2^N) 
+Time complexity with DP: O(M × N) where M is the 
+target sum, N is the number of elements 
+Space complexity : without optimization O(M × N) 
+With space optimization : O(M) 
+6. Fl
+oyd-warshall’s : All pair shortest path
+U
+sed to find the shortest distances between every
+pa
+ir of vertices in a weighted graph. Works with
+po
+sitive and negative edge weights (but no
+negative weight cycles allowed).
+Recurrence relation
+A^0(i, j) = C(i, j)
+A^k(i, j) = min( A^{k-1}(i, j), A^{k-1}(i, k) + A^{k-
+1}(k, j) )
+where : C(i,j): initial weight of the edge from iii to jjj
+A^k(i,j)A^k(i, j)Ak(i,j): shortest path from iii to jjj
+using vertices {1,2,…,k}\{1, 2, \dots, k\}{1,2,…,k} a
+s
+i
+ntermediate nodes
+Time complexity O(n^3)
+Space complexity O(n^2)
+7. O ptimal binary search tree
+Gi
+ven a sorted array of keys[0..n-1] and their
+f
+requencies:
+- p[i]: frequency of successful searches for keys[i]
+- q[i]: frequency of unsuccessful searches between
+keys
+Goal: Construct a binary search tree that minimize
+s
+t
+he total expected cost of searches.
+R
+ecurrence relation 
+cost(i, j) = 
+    if j < i → return 0 
+    else → min over k ∈ [i..j] of: 
+        cost(i, k-1) + cost(k+1, j) + w(i, j) 
+Where: w(i, j) = sum of p[i..j] + sum of q[i-1..j] 
+Time complexity : O(n^3) 
+Space complexity : O(n^2) 
+8. Mu
+ltistage graph
+A m
+ultistage graph is a directed acyclic graph
+(DAG) in which the set of vertices is partitioned into
+stages (e.g., S1,S2,...,Sk) such that:
+Every edge connects a vertex from stage iii to stage
+i+
+1
+The goal is to find the shortest path from the
+s
+ource vertex in stage S1to the destination vertex
+in stage Sk
+MSG(si, vj) =
+0 if si = F and vj is the destination
+min over all K in si+1 where (vj, K) ∈ E:
+  cost(vj, K) + MSG(si+1, K) 
+T
+ime Complexity: 
+● Without dynamic programming: O(2^n)
+● With dynamic programming: O(V + E)
+S
+pace Complexity: 
+● Without dynamic programming: O(V^2)
+ALGORITHMS
+GATE फर्रे 
+Page No:- 12
+● With dynamic programming: O(V^2)
+T
+ime Complexity: 
+● W
+ithout DP: O(2^n) (due to exponential
+combinations)
+● With DP: O(V + E)
+(because each vertex and edge is processed only
+o
+nce)
+Space Complexity: 
+● Without DP: O(V^2)
+● With DP: O(V^2)
+ALGORITHMS
+GATE फर्रे 
+Page No:- 13
+Module 5 : Graph traversal Techniques 
+Visiting all nodes of the tree/Graph in a specified 
+order and processing the information only once. 
+D
+FS in Undirected graph: 
+a. Connected graph
+Structure of node
+E-node: Exploring node
+Live node: Node which is not fully explored
+Dead node: Node which is fully explored
+Time associated with the node, during traversal
+Discovery time: The time at which the node i
+s
+vi
+sited for the first time.
+Finishing time: The time at which nodes
+be
+come dead.
+b. D
+isconnected/Disjoint graph : Depth forest
+tree
+DFS in Directed graph: DFS when carried out on a 
+directed graph leads to following types of edge. 
+1. Tree edge : it is part of DFS spanning tree o
+r
+f
+orest
+2. Forward edge: Leads from a node to its non
+chi
+ld descendant in the spanning tree
+3. Back edge: Leads from a node to its ancestors
+4. Cross edge: Leads to a node which is neither
+a
+scending nor descending.
+D
+FS in Directed graph acyclic graph 
+Topological Sort: 
+Linear order of the vertices representing the activities 
+maintaining precedence. 
+Ex
+ample below. 
+T
+opological sort(){ 
+1. DFS(v).
+2. Arrange all the nodes of traversal in
+decreasing order of finishing time.
+} 
+BFS : Level by level order traversal 
+1. FIFO BFS: (BFS  spanning tree) A B C D E F G
+H
+2. L
+IFO BFS: A C G H E D F B
+ALGORITHMS
+GATE फर्रे 
+Page No:- 14
+Applicatio
+n of DFS & BSF 
+Time complexity of DFS and BFS depends upon 
+representation of Graph: 
+(i) Adjacency matrix: O(V²)
+(ii) Adjacency list: O(V + E)
+Both DFS and BFS can be used to detect the presence 
+of cycle in the graph. 
+Both DFS and BFS can be used to know whether the 
+given graph is connected or not. 
+Both DFS and BFS can be used to know whether the 
+two vertices u and v are connected or not. 
+DFS is used to determine connected, strongly 
+connected, biconnected components, and 
+articulation points. 
+Connected Component (Undirected graph) : It is a 
+maximal set of vertices such that there is a path 
+between any pair of vertices in that set. 
+Strongly connected component (Directed graph): A 
+Strongly Connected Component (SCC) of a directed 
+graph is a maximal set of vertices such that for every 
+pair of vertices u and v in the set, there is a path from 
+u to v and a path from v to u.
+Properties of Strongly Connected Components
+1. Every directed graph is a D.A.G. of strongly 
+connected components.
+2. Let C and C′ be distinct strongly connected 
+components in directed graph G = (V, E). Let u, 
+v ∈ C and u′, v′ ∈ C′. Suppose that there is a 
+path u → u′ in G, then there cannot be a path v′
+→ v in G.
+3. If C and C′ are strongly connected components 
+of G, and there is an edge from a node in C to a 
+node in C′, then the highest post number in C is 
+bigger than the highest post number in C′.
+Bi-
+connected Graph: A graph with no articulation 
+points. 
+Bi-connected Component: A maximal subgraph that 
+is bi-connected. 
+ALGORITHMS
+GATE फर्रे 
+Articulation point (cut vertex) 
+Articulation Point: A vertex whose removal 
+increases the number of connected components in a 
+graph. 
+Page No:- 15
+Searching and Sorting 
+Classification Explanation 
+Internal vs 
+External 
+sorting 
+Internal: All data fits into main 
+memory (RAM). 
+External: Used when data is too large 
+to fit into memory and uses external 
+storage 
+Comparison 
+vs Non-
+comparison 
+Based 
+Comparison: Sorting is done using 
+comparisons between elements 
+Non-comparison: Uses digit-based 
+or counting approaches(radix sort, 
+counting sort) 
+Recursive vs 
+Iterative 
+Recursive: The function calls itself to 
+divide and conquer (e.g., Merge Sort, 
+Quick Sort). 
+In-place vs 
+Not-in-place 
+Space required is generally O(1) or 
+O(log n) at most (for recursion stack) 
+Merge Sort → O(n) space 
+Stable vs 
+Unstable 
+Relative order of same elements is 
+maintained (Stable) 
+1. C
+omparison based sorting
+a
+lgorithm
+Algorithm Time complexity Stable 
+sorting 
+In 
+place 
+sorting 
+Best Avera
+ge 
+Worst 
+Quick sort Ω(n 
+log n) 
+Θ(n 
+log n) 
+O(n²) No Yes 
+Merge 
+sort 
+Ω(n 
+log n) 
+Θ(n 
+log n) 
+O(n 
+log n) 
+Yes No 
+Insertion 
+sort 
+Ω(n) Θ(n²) O(n²) Yes Yes 
+Selection 
+sort 
+Ω(n²) Θ(n²) O(n²) No Yes 
+Bubble 
+sort 
+Ω(n) Θ(n²) O(n²) Yes Yes 
+Heap sort Ω(n 
+log n) 
+Θ(n 
+log n) 
+O(n 
+log n) 
+No Yes 
+S
+election sort takes the least number of swaps overall 
+i.e. (n – 1) swaps — no matter how unsorted the input
+is.
+ALGORITHMS
+GATE फर्रे 
+Page No:- 16
+2. N on Comparison based sorting:
+Algorithm Time complexity Stable 
+sorting 
+In 
+place 
+sorting Best Averag
+e 
+Worst 
+Radix sort Ω(d * (n 
++ k))
+Θ(d * (n 
++ k))
+O(d * (n 
++ k))
+Yes  No 
+Counting 
+sort 
+Ω(n + k) Θ(n + k) O(n + 
+k) 
+Yes No 
+Bucket sort Ω(n + k) Θ(n + k) O(n²) Yes(if 
+stable 
+sort 
+used 
+inside 
+buckets
+) 
+No 
+ALGORITHMS
+GATE फर्रे 
+Page No:- 17
