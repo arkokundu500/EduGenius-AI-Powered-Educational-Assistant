@@ -1,5 +1,5 @@
 streamlit
-google-generativeai
+groq
 python-dotenv
 pypdf
 python-docx

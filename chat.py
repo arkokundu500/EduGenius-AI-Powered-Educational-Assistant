@@ -1,27 +1,38 @@
 import streamlit as st
-import google.generativeai as genai
 import os
 import re
 from pathlib import Path
 from collections import defaultdict
-import io  
-import time 
-from pypdf import PdfReader  
-import docx  
-
+import io
+import time
+from pypdf import PdfReader
+import docx
+from groq import Groq  # Import Groq
 
 CUSTOM_DATA_DIR = "public"  
-MAX_CONTEXT_LENGTH = 30000  
+MAX_CONTEXT_LENGTH = 30000  # Adjust as needed for Llama-3.3's context window
 CHUNK_SIZE = 500  
 
-# Initialize Gemini
-genai.configure(api_key=os.getenv("GOOGLE_API_KEY") or st.secrets["GOOGLE_API_KEY"])
-model = genai.GenerativeModel('gemini-2.0-flash')
+# --- Initialize Groq Client ---
+try:
+    # Get API key from Streamlit secrets or environment variable
+    groq_api_key = os.getenv("GROQ_API_KEY") or st.secrets["GROQ_API_KEY"]
+    if not groq_api_key:
+        raise ValueError("GROQ_API_KEY not found. Please set it in your environment or Streamlit secrets.")
+    
+    client = Groq(api_key=groq_api_key)
+    LLM_MODEL = "openai/gpt-oss-120b" # The user-specified model
 
-# --- FIX: Initialize session state for processed files ---
+except Exception as e:
+    st.error(f"Error initializing Groq client: {e}")
+    st.stop()
+
+
+# Initialize session state for processed files
 if "processed_files" not in st.session_state:
     st.session_state.processed_files = []
 
+# --- File Extraction Functions (Unchanged) ---
 
 def extract_text_from_pdf(file_bytes):
     """Extracts text from a PDF file."""
@@ -54,14 +65,14 @@ def extract_text_from_docx(file_bytes):
 def save_text_to_public(text_content, original_filename):
     """Saves extracted text to a new file in the public directory."""
     try:
-        
+        # Create a unique filename to avoid overwrites
         base_name = Path(original_filename).stem
         timestamp = int(time.time())
         new_filename = f"{base_name}_{timestamp}.txt"
         
         save_path = Path(CUSTOM_DATA_DIR) / new_filename
         
-        
+        # Ensure public directory exists
         save_path.parent.mkdir(exist_ok=True)
         
         with open(save_path, "w", encoding="utf-8") as f:
@@ -71,9 +82,10 @@ def save_text_to_public(text_content, original_filename):
         st.error(f"Error saving file: {e}")
         return None
 
+# --- End of File Extraction Functions ---
 
 
-@st.cache_data(ttl=600) 
+@st.cache_data(ttl=600) # Cache data loading for 10 minutes
 def load_custom_data():
     """Load and preprocess all text files with improved chunking"""
     custom_data = []
@@ -148,20 +160,25 @@ def find_relevant_chunks(query, custom_data):
     chunk_scores.sort(reverse=True, key=lambda x: x[0])
     return [chunk for score, chunk in chunk_scores if score > 0][:7]  
 
+# --- Updated generate_response Function ---
 def generate_response(query, custom_data):
-    """Enhanced response generation with context prioritization"""
+    """Enhanced response generation with context prioritization using Groq"""
     relevant_chunks = find_relevant_chunks(query, custom_data)
     
-    if not relevant_chunks:
-        
-        return model.generate_content(
-            f"Answer this question: {query} "
-            "(Note: No relevant information found in provided materials. You can upload documents in the sidebar.)"
-        ).text
+    system_prompt = ""
+    context_prompt = ""
     
-    context = "\n\n".join(relevant_chunks)
-    prompt = f"""You are an educational assistant. Follow these steps:
-    1. FIRST Analyze the information within {context} carefully before answering.
+    if not relevant_chunks:
+        system_prompt = "You are an educational assistant. Answer the user's question."
+        context_prompt = "(Note: No relevant information found in provided materials. You can upload documents in the sidebar.)"
+    else:
+        context = "\n\n".join(relevant_chunks)
+        # Truncate context if it's too long
+        if len(context) > MAX_CONTEXT_LENGTH:
+            context = context[:MAX_CONTEXT_LENGTH]
+            
+        system_prompt = f"""You are an educational assistant. Follow these steps:
+1. FIRST Analyze the information within {context} carefully before answering.
 
     2. Identify key facts or details directly relevant to the question.
 
@@ -185,20 +202,37 @@ def generate_response(query, custom_data):
         “I could not find the information in the given materials, but here are some details from the Web:”
 
     12. After that line, include only concise and important information from reliable web sources.
+"""
+        # Context is now in the system prompt, so no extra context prompt is needed
+        context_prompt = "" 
 
-    Question: {query}
-    Answer:"""
+    user_message = f"{context_prompt}\n\nQuestion: {query}"
     
-    if len(prompt) > MAX_CONTEXT_LENGTH:
-        prompt = prompt[:MAX_CONTEXT_LENGTH]
-    
-    return model.generate_content(prompt).text
+    try:
+        chat_completion = client.chat.completions.create(
+            messages=[
+                {
+                    "role": "system",
+                    "content": system_prompt,
+                },
+                {
+                    "role": "user",
+                    "content": user_message,
+                }
+            ],
+            reasoning_effort="medium",
+            model=LLM_MODEL,
+        )
+        return chat_completion.choices[0].message.content
+    except Exception as e:
+        st.error(f"Error generating response from Groq: {e}")
+        return "Sorry, I encountered an error while trying to generate a response."
 
 # --- Main App Logic ---
 
-st.set_page_config(page_title="EduGenius - Assistant AI", page_icon="🎓")
-st.title(" EduGenius - Your Constant Learning Assistant")
-st.caption(f"Either Upload documents or provide your queries related to educational content")
+st.set_page_config(page_title="VLabs- Assistant AI", page_icon="🎓")
+st.title(" Education Assistant with VLABS Knowledge")
+st.caption(f"Provide your queries related to educational content")
 
 # --- Sidebar for File Upload (with Loop Fix) ---
 with st.sidebar:
@@ -215,7 +249,7 @@ with st.sidebar:
         files_processed_this_run = False
         new_files_to_process = []
 
-        # --- FIX: Check which files are new ---
+        # Check which files are new
         for uploaded_file in uploaded_files:
             if uploaded_file.file_id not in st.session_state.processed_files:
                 new_files_to_process.append(uploaded_file)
@@ -235,7 +269,7 @@ with st.sidebar:
                         saved_filename = save_text_to_public(text_content, uploaded_file.name)
                         if saved_filename:
                             st.success(f"Added '{uploaded_file.name}' as '{saved_filename}'")
-                            # --- FIX: Add file ID to processed list ---
+                            # Add file ID to processed list
                             st.session_state.processed_files.append(uploaded_file.file_id)
                             files_processed_this_run = True
                         else:
@@ -243,7 +277,7 @@ with st.sidebar:
                     else:
                         st.error(f"Could not extract text from '{uploaded_file.name}'")
             
-            # --- FIX: Only rerun if new files were processed ---
+            # Only rerun if new files were processed
             if files_processed_this_run:
                 st.cache_data.clear()
                 st.rerun()
