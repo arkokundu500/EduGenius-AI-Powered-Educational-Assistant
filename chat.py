@@ -230,8 +230,8 @@ def generate_response(query, custom_data):
 
 # --- Main App Logic ---
 
-st.set_page_config(page_title="VLabs- Assistant AI", page_icon="🎓")
-st.title(" Education Assistant with VLABS Knowledge")
+st.set_page_config(page_title="EduGenius - Assistant AI", page_icon="🎓")
+st.title("🎓 EduGenius 🎓 your Constant Companion")
 st.caption(f"Provide your queries related to educational content")
 
 # --- Sidebar for File Upload (with Loop Fix) ---
