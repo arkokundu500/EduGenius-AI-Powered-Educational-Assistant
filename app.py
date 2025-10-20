@@ -51,7 +51,7 @@ with st.sidebar:
         st.session_state.custom_data = None
 
 # Main chat interface
-st.title("🎓 EduChatbot - Learning Assistant")
+st.title("🎓 EduGenuis - Learning Assistant")
 st.caption("An AI-powered educational assistant")
 
 # Display chat messages
